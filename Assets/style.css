@@ -1,16 +1,16 @@
 @font-face {
     font-family: 'Manrope-bold';
-    src: url('/Assets/fonts/Manrope-Bold.ttf') format('truetype');
+    src: url('Assets/fonts/Manrope-Bold.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Manrope-ExtraBold';
-    src: url('/Assets/fonts/Manrope-ExtraBold.ttf') format('truetype');
+    src: url('Assets/fonts/Manrope-ExtraBold.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Manrope-regular';
-    src: url('/Assets/fonts/Manrope-Regular.ttf') format('truetype');
+    src: url('Assets/fonts/Manrope-Regular.ttf') format('truetype');
 }
 
 /*<------------------------------ Reset global ---------------------------->*/
