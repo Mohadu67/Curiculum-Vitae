@@ -21,12 +21,12 @@ const menuItems = document.querySelectorAll(".menu ul li");
 
 window.addEventListener("scroll", () => {
     if (window.scrollY > 50) { 
-        menu.style.height = "100px"; 
+        menu.style.height = "80px"; 
         menuItems.forEach(item => {
             item.style.fontSize = "0";
         });
     } else {
-        menu.style.height = "180px";
+        menu.style.height = "100px";
         menuItems.forEach(item => {
             item.style.fontSize = "2vw";
         });
@@ -248,7 +248,7 @@ navLinks.forEach(link => {
 
         targetSection.scrollIntoView({
             behavior: "smooth",
-            block: "start"
+            block: "center"
         });
     });
 });

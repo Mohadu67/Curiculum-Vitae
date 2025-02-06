@@ -71,7 +71,7 @@ header div img {
 
 .menu ul {
     list-style-type: none;
-    margin: 100px auto;
+    margin: 30px auto;
     display: flex;
     white-space: nowrap;
     border: 1px solid white;
@@ -322,7 +322,7 @@ canvas {
     background: #333;
     display: block;
     border: 3px solid white;
-    width: 40%;
+    width: 80%;
     margin: 80px auto;
 }
 
