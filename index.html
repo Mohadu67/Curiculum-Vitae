@@ -14,12 +14,15 @@
     <body>
 
         <header>
-            <ul>
-                <li>Experience Pro</li>
-                <li>Formations</li>
-                <li>Compétences</li>
-            </ul>
 
+            <div class="menu">
+                <ul>
+                    <li><a href="#experience">Expérience Pro</a></li>
+                    <li><a href="#formation">Formations</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                </ul>
+            </div>
+                
             <div>
                 <img src="Assets/img/photo_cv_-removebg-preview.png" alt="">
                 <h1>HAMIANI Mohammed</h1>
@@ -45,7 +48,7 @@
         <section class="compétences">
             <h2>Mes compétences</h2>
 
-            <div>
+            <div id="competences">
                 <ul>
                     <li>
                         <img src="Assets/icon/e3efec62db628ce86af28b42ef2dce62.png" alt="">
@@ -64,32 +67,164 @@
             </div>
         </section>
 
-        <section class="Soft Skills">
-            <h2>Mes Softs Skills</h2>
+        <section>
+            
 
-            <div class="skills">
-                
-                <div class="content">
-                    <button class="skill-button one" data-value="10"></button>
-                    <button class="skill-button two" data-value="10"></button>
-                    <button class="skill-button tree" data-value="10"></button>
-                </div>
+            <div class="soft-skills">
 
-                <div class="content">
-                    <button class="skill-button for" data-value="10"></button>
-                    <button class="skill-button five" data-value="10"></button>
-                    <button class="skill-button sixt" data-value="10"></button>
+                <h2>Mes Softs Skills</h2>
+
+                <div class="skills">
+                    
+                    <div class="content">
+
+                        <li>
+                            <p>test</p>
+                            <button class="skill-button one" data-value="10"></button>
+                        </li>
+                        <li>
+                            <p>test</p>
+                            <button class="skill-button two" data-value="10"></button>
+                        </li>
+                        <li>
+                            <p>test</p>
+                        <button class="skill-button tree" data-value="10"></button>
+                        </li>
+
+                    </div>
+
+                    <div class="content">
+
+                        <li>
+                            <p>test</p>
+                            <button class="skill-button for" data-value="10"></button>
+                        </li>
+                        <li>
+                            <p>test</p>
+                            <button class="skill-button five" data-value="10"></button>
+                        </li>
+                        <li>
+                            <p>test</p>
+                        <button class="skill-button sixt" data-value="10"></button>
+                    </li>
+                    
                 </div>
             </div>
+        </div>
 
         </section>
-        
 
-        <div class="background-circles">
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="circle"></div>
+        <section>
+
+            <div>
+
+                <h2>Jeux</h2>
+                <div class="jeux">
+                    <canvas id="gameCanvas"></canvas>
+                    <button id="restartButton">Recommencer</button>
+                </div>
+
+                <div class="mobile-controls">
+                    <button id="jumpButton" class="jump-btn">↑</button>
+                    <button id="leftArrow" class="arrow-btn">←</button>
+                    <button id="rightArrow" class="arrow-btn">→</button>
+                </div>
+                
+            </div>
+
+            <div class="soft-skills">
+
+                <h2>Mes Compétence Web</h2>
+
+                <div class="skills">
+                    
+                    <div class="content">
+
+                        <li>
+                            <p>test</p>
+                            <button class="skill-button one" data-value="10"></button>
+                        </li>
+                        <li>
+                            <p>test</p>
+                            <button class="skill-button two" data-value="10"></button>
+                        </li>
+                        <li>
+                            <p>test</p>
+                        <button class="skill-button tree" data-value="10"></button>
+                        </li>
+
+                    </div>
+
+                    <div class="content">
+
+                        <li>
+                            <p>test</p>
+                            <button class="skill-button for" data-value="10"></button>
+                        </li>
+                        <li>
+                            <p>test</p>
+                            <button class="skill-button five" data-value="10"></button>
+                        </li>
+                        <li>
+                            <p>test</p>
+                        <button class="skill-button sixt" data-value="10"></button>
+                    </li>
+                    
+                </div>
+            </div>
         </div>
+
+    </section>
+    
+    <section id="formation">
+
+        <div class="formations">
+            <h2> Mes Formations</h2>
+            <ul>
+                <li>
+                    <h3>Gestion de service</h3>
+                    <p>KFC | Homme de fer, Strasbour</p>
+                    <p>Septembre 2019 à Février 2020</p>
+                </li>
+                <li>
+                    <h3>Gestion de restaurant</h3>
+                    <p>Pizza Hut | Sengewald, Strasbourg</p>
+                    <p>Septembre 2021 à Décembre 2021</p>
+                </li>
+                <li>
+                    <h3>Gestion de devloppeur web</h3>
+                    <p>CCI Campus | Avenue de colmar, Strasbourg</p>
+                    <p>Septembre 2024 à Mars 2025</p>
+                </li>
+            </ul>
+
+        </div>
+    </section>
+
+    <section>
+        <h2> Mes Expériences Pro</h2>
+        <div class="experiences">
+            <ul id="experience">
+                
+                <li>
+                    <h3>Manager</h3>
+                    <p>KFC | Homme de fer, Strasbour</p>
+                    <p>Septembre 2018 à Août 2021</p>
+                </li>
+                <li>
+                    <h3>RGM</h3>
+                    <p>Pizza Hut | Sengewald, Strasbourg</p>
+                    <p>Septembre 2021 à Février 2023</p>
+                </li>
+                <li>
+                    <h3>Directeur</h3>
+                    <p>KFC | Porte de l'hopital, Strasbourg</p>
+                    <p>Mars 2023 à Décembre 2023</p>
+                </li>
+            </ul>
+
+        </div>
+    </section>
         
     </body>
 
