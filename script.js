@@ -199,29 +199,29 @@ const rightArrow = document.getElementById("rightArrow");
 const jumpButton = document.getElementById("jumpButton");
 
 
-leftArrow.addEventListener("click", () => {
+leftArrow.addEventListener("touchstart", () => {
     keys.left = true;
     keys.right = false;
 });
-rightArrow.addEventListener("click", () => {
+rightArrow.addEventListener("touchstart", () => {
     keys.right = true;
     keys.left = false;
 });
-jumpButton.addEventListener("click", () => {
+jumpButton.addEventListener("touchstart", () => {
     keys.jump = true;
 });
 
 
-leftArrow.addEventListener("mouseup", () => {
+leftArrow.addEventListener("touchend", () => {
     keys.left = false;
 });
-rightArrow.addEventListener("mouseup", () => {
+rightArrow.addEventListener("touchend", () => {
     keys.right = false;
 });
-
-jumpButton.addEventListener("mouseup", () => {
+jumpButton.addEventListener("touchend", () => {
     keys.jump = false;
 });
+
 
 
 const jeux = document.querySelector(".menu");
