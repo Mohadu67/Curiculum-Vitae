@@ -64,7 +64,7 @@ header div img {
     right: 0;
     background-color: #00051E; 
     z-index: 1000; 
-    height: 180px; 
+    height: 100px; 
     transition: height 0.3s ease; 
     padding: 20px 0;
 }
@@ -198,7 +198,6 @@ button.learn-more:hover {
     color: white;
     font-family: var(--font-p);
     font-size: 12px;
-    cursor: pointer;
     width: 150px;
     box-shadow: 0 15px 50px rgb(255 255 255 / 20%);
 }
@@ -209,10 +208,6 @@ button.learn-more:hover {
     margin: 10px;
 }
 
-.compétences div ul li:hover {
-    background-color: #001F54;
-    transition: all 0.8s;
-}
 
 
 
@@ -272,7 +267,7 @@ button.learn-more:hover {
     background-color: white;
     border: none;
     overflow: hidden;
-    width: 10vw;
+    width: 200px;
     transition: transform 0.8s ease, box-shadow 0.8s ease;
     transform-style: preserve-3d;
 }
@@ -369,16 +364,70 @@ button#restartButton {
 }
 
 .arrow-btn:hover, .jump-btn:hover {
-    background-color: rgba(255, 255, 255, 0.5); /* Effet de survol */
+    background-color: rgba(255, 255, 255, 0.5); 
 }
 
 .jump-btn {
     width: 50px;
     height: 50px;
-    font-size: 24px; /* Pour la flèche du saut */
+    font-size: 24px; 
+}
+
+/* Cacher par défaut */
+.hidden {
+    display: none;
+}
+
+/*<------------------------------ Section hardskils ---------------------------->*/
+
+.competences-web {
+    max-width: 600px;
+    width: 80%;
+    margin: 60px auto;
+    height: 300px;
+}
+
+.hard-skills {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    padding: 10px;
+    gap: 20px;
+}
+
+.contenu p {
+    font-family: var(--font-p);
+    font-size: 16px;
+    color: white;
+    text-align: start;
+    margin: 10px;
+}
+
+/* Container for each skill bar */
+.skill-container {
+    width: 100%;
+    background-color: #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Skill bar itself */
+.skill-bar {
+    height: 15px;
+    width: 0;
+    background-color: var(--couleur-bleu);
+    border-radius: 8px;
+    transition: width 1s ease-in-out;
 }
 
 
+.contenu {
+    width: 200PX;
+}
+
+
+
+/*<------------------------------ Section Formations ---------------------------->*/
 
 .formations ul {
     list-style: none;
