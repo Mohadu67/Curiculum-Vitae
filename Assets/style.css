@@ -34,7 +34,7 @@ html, body, img, video, canvas, svg {
 
 body {
 
-    font-family: 'manrope-regular';
+    font-family: var(--font-titre);
     /* background: radial-gradient(circle at top, #001F54, #00051E); */
     background: #00051E;
     color: white;
