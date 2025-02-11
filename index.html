@@ -16,6 +16,7 @@
         <header>
 
             <div class="menu">
+                <div class="progress-bar"></div> <!-- Barre de progression -->
                 <ul>
                     <li><a href="#experience">Expérience Pro</a></li>
                     <li><a href="#formation">Formations</a></li>
@@ -46,70 +47,77 @@
         </header>
         
         <section class="compétences">
-            <h2>Mes compétences</h2>
+            
+            <h3>Mes <strong>Projets</strong></h3>
+            <div class="carousel-container">
+    <div class="carousel">
+        <div class="carousel-item active">
+            <h4>Projet 1</h4>
+            <p>Description du projet 1</p>
+        </div>
+        <div class="carousel-item">
+            <h4>Projet 2</h4>
+            <p>Description du projet 2</p>
+        </div>
+        <div class="carousel-item">
+            <h4>Projet 3</h4>
+            <p>Description du projet 3</p>
+        </div>
+        <!-- Ajoute autant d'éléments que nécessaire -->
+    </div>
 
-            <div id="competences">
-                <ul>
-                    <li>
-                        <img src="Assets/icon/mindfulness_24dp_FFFFFF_FILL0_wght200_GRAD0_opsz24.svg" alt="">
-                        <h3>Soft Skills</h3>
-                    </li>
-                    <li>
-                        <img src="Assets/icon/terminal_24dp_FFFFFF_FILL0_wght200_GRAD0_opsz24.svg" alt="">
-                        <h3>Web</h3>
-                    </li>
-
-                </ul>
-            </div>
+    <button class="carousel-prev">←</button>
+    <button class="carousel-next">→</button>
+</div>
         </section>
 
         <section>
             
+            <h3>Mes <strong>Soft Skills</strong></h3>
 
             <div class="competences-web">
 
-                <h2>Mes Compétence Web</h2>
 
                 <div class="hard-skills">
                     
                     <div class="contenu">
                         <li>
-                            <p>HTML</p>
+                            <p>Résolution de problèmes</p>
                             <div class="skill-container">
                                 <div class="skill-bar" data-value="80"></div>
                             </div>
                         </li>
                         <li>
-                            <p>CSS</p>
+                            <p>Communication</p>
                             <div class="skill-container">
                                 <div class="skill-bar" data-value="70"></div>
                             </div>
                         </li>
                         <li>
-                            <p>JavaScript</p>
+                            <p>Collaboration</p>
                             <div class="skill-container">
-                                <div class="skill-bar" data-value="60"></div>
+                                <div class="skill-bar" data-value="80"></div>
                             </div>
                         </li>
                     </div>
 
                     <div class="contenu">
                         <li>
-                            <p>HTML</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="80"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <p>CSS</p>
+                            <p>Gestion du temps</p>
                             <div class="skill-container">
                                 <div class="skill-bar" data-value="70"></div>
                             </div>
                         </li>
                         <li>
-                            <p>JavaScript</p>
+                            <p>Autonome</p>
                             <div class="skill-container">
-                                <div class="skill-bar" data-value="60"></div>
+                                <div class="skill-bar" data-value="90"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Adaptabilité</p>
+                            <div class="skill-container">
+                                <div class="skill-bar" data-value="70"></div>
                             </div>
                         </li>
                     </div>
@@ -122,7 +130,7 @@
 
             <div>
 
-                <h2>Jeux</h2>
+                <h2>Tu t'ennuie ? Essaye de monter les etages</h2>
                 <div class="jeux">
                     <canvas id="gameCanvas"></canvas>
                     <button id="restartButton">Recommencer</button>
@@ -136,9 +144,9 @@
                 
             </div>
 
+            <h3>Mes <strong>Hard Skills</strong></h3>
             <div class="competences-web">
 
-                <h2>Mes Compétence Web</h2>
 
                 <div class="hard-skills">
                     
@@ -165,21 +173,21 @@
 
                     <div class="contenu">
                         <li>
-                            <p>HTML</p>
+                            <p>PHP</p>
+                            <div class="skill-container">
+                                <div class="skill-bar" data-value="60"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <p>MySQL</p>
                             <div class="skill-container">
                                 <div class="skill-bar" data-value="80"></div>
                             </div>
                         </li>
                         <li>
-                            <p>CSS</p>
+                            <p>GIT</p>
                             <div class="skill-container">
                                 <div class="skill-bar" data-value="70"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <p>JavaScript</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="60"></div>
                             </div>
                         </li>
                     </div>
@@ -193,35 +201,90 @@
     <section id="formation">
 
         <div class="formations">
-            <h2> Mes Formations</h2>
+            <h3>Mes <strong>Formations</strong></h3>
             <ul>
                 <li>
-                    <h3>Gestion de service</h3>
-                    <p>KFC | Homme de fer, Strasbour</p>
+                    <h4>Gestion de service</h4>
+                    <p>KFC | Homme de fer, Strasbourg</p>
                     <p>Septembre 2019 à Février 2020</p>
+                    <div class="click-indicator">Cliquez pour plus de détails</div>
+                    <p id="detail-kfc" class="detail hidden">
+                        <strong>Introduction :</strong>
+                        <br>
+                        Au sein de l’établissement KFC à Strasbourg, j’ai eu l’opportunité d’exercer le rôle de responsable de service, un poste clé dans la gestion quotidienne d’un restaurant rapide. Cette expérience m’a permis de développer des compétences en gestion d’équipe, en service client et en optimisation des opérations dans un environnement dynamique et exigeant. J’ai également appris à m’adapter aux défis liés à la pression constante tout en maintenant des standards élevés de qualité.
+
+                        <strong>Acquis :</strong>
+                        <ul>
+                            <li><strong>Gestion d’équipe :</strong> Organisation des plannings, répartition des tâches et supervision de l’équipe pour garantir un service fluide.</li>
+                            <li><strong>Formation equipier :</strong> Formation des nouveaux employés aux normes et procédures KFC.</li>
+                            <li><strong>Service client :</strong> Gestion des réclamations et interactions avec les clients pour assurer leur satisfaction.</li>
+                            <li><strong>Optimisation opérations :</strong> Suivi des stocks, commandes et gestion des approvisionnements pour éviter les ruptures.</li>
+                            <li><strong>Respect des normes :</strong> Application des standards d’hygiène et de sécurité alimentaire.</li>
+                            <li><strong>Leadership :</strong> Capacité à motiver l’équipe pour atteindre les objectifs quotidiens, surtout durant les périodes de forte affluence.</li>
+                        </ul>
+                        <br><strong>Résumé :</strong>
+                        Cette formation m’a permis de maîtriser les aspects fondamentaux de la gestion d’un service dans un environnement de restauration rapide. J’ai appris à jongler entre la satisfaction client, la gestion d’équipe et la rentabilité opérationnelle. L’expérience m’a formé à devenir un leader capable de gérer la pression tout en maintenant un haut niveau de performance et de satisfaction client. Grâce à cette opportunité, j’ai acquis une solide base en gestion, que je peux transposer dans d’autres secteurs et situations professionnelles.
+                    </p>
                 </li>
+    
                 <li>
-                    <h3>Gestion de restaurant</h3>
+                    <h4>Gestion de restaurant</h4>
                     <p>Pizza Hut | Sengewald, Strasbourg</p>
                     <p>Septembre 2021 à Décembre 2021</p>
+                    <p id="detail-pizzahut" class="detail hidden">
+                        <strong>Introduction :</strong>
+                        <br>
+                        En tant que responsable dans un restaurant Pizza Hut à Strasbourg, j’ai approfondi mes compétences en gestion d’un établissement de restauration à grande échelle. Mon rôle consistait à superviser les équipes de salle et de cuisine, à gérer la relation client, et à veiller au respect des normes de qualité et de sécurité.
+                        <br><br>
+                        <strong>Acquis :</strong>
+                        <ul>
+                            <li><strong>Supervision des équipes :</strong> Gestion et formation des équipes en cuisine et en salle pour assurer un service efficace.</li>
+                            <li><strong>Gestion des stocks :</strong> Contrôle des inventaires et approvisionnement pour éviter les pénuries.</li>
+                            <li><strong>Service client :</strong> Mise en place de stratégies pour améliorer la satisfaction des clients et la fidélisation.</li>
+                        </ul>
+                        <br><strong>Résumé :</strong>
+                        Cette expérience m’a permis de renforcer ma capacité à gérer une équipe dans un environnement rapide tout en respectant les normes et en optimisant la rentabilité.
+                    </p>
                 </li>
+    
                 <li>
-                    <h3>Gestion de devloppeur web</h3>
-                    <p>CCI Campus | Avenue de colmar, Strasbourg</p>
+                    <h4>Gestion de développeur web</h4>
+                    <p>CCI Campus | Avenue de Colmar, Strasbourg</p>
                     <p>Septembre 2024 à Mars 2025</p>
+                    <p id="detail-devweb" class="detail hidden">
+                        <strong>Introduction :</strong>
+                        <br>
+                        Cette formation me permet de me spécialiser dans le développement web avec un focus sur le front-end. J’acquiers des compétences dans la création de sites web dynamiques et réactifs, la gestion de bases de données, ainsi que dans la gestion des projets web de manière agile.
+                        <br><br>
+                        <strong>Acquis :</strong>
+                        <ul>
+                            <li><strong>HTML, CSS, JavaScript :</strong> Maîtrise de la création d'interfaces web attrayantes et réactives.</li>
+                            <li><strong>Gestion de projets :</strong> Mise en place de méthodologies agiles pour la gestion de projets web.</li>
+                            <li><strong>Développement backend :</strong> Notions de développement côté serveur avec PHP et MySQL.</li>
+                        </ul>
+                        <br><strong>Résumé :</strong>
+                        Cette formation me prépare à devenir un développeur web complet, capable de gérer l’intégralité d’un projet web, de la conception à la mise en ligne.
+                    </p>
                 </li>
+    
             </ul>
-
         </div>
     </section>
+    
+    <script>
+        function toggleDetail(id) {
+            const detail = document.getElementById(id);
+            detail.classList.toggle('hidden');
+        }
+    </script>
 
     <section>
-        <h2>Mes Expériences Professionnelles</h2>
+        <h3>Mes <strong>Expériences Professionnelles</strong></h3>
         <div class="experiences">
             <ul id="experience">
                 <li>
                     <div>
-                        <h3>Manager</h3>
+                        <h4>Manager</h4>
                         <p>KFC | Homme de Fer, Strasbourg</p>
                         <p>Septembre 2018 à Août 2021</p>
                     </div>
@@ -231,7 +294,7 @@
                 </li>
                 <li>
                     <div>    
-                        <h3>RGM</h3>
+                        <h4>RGM</h4>
                         <p>Pizza Hut | Sengewald, Strasbourg</p>
                         <p>Septembre 2021 à Février 2023</p>
                     </div>
@@ -241,7 +304,7 @@
                 </li>
                 <li>
                     <div>
-                        <h3>Directeur</h3>
+                        <h4>Directeur</h4>
                         <p>KFC | Porte de l'Hôpital, Strasbourg</p>
                         <p>Mars 2023 à Décembre 2023</p>
                     </div>

@@ -15,22 +15,75 @@ document.querySelectorAll(".learn-more").forEach(btn => {
 
 
 
-const menu = document.querySelector(".menu");
-const menuItems = document.querySelectorAll(".menu ul li");
+window.addEventListener('scroll', function() {
+    const menu = document.querySelector('.menu');
+    const progressBar = document.querySelector('.progress-bar');
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) { 
-        menu.style.height = "80px"; 
-        menuItems.forEach(item => {
-            item.style.fontSize = "0";
-        });
+    if (window.scrollY > 100) {
+        menu.classList.add('minimized');
     } else {
-        menu.style.height = "0";
-        menuItems.forEach(item => {
-            item.style.fontSize = "2vw";
-        });
+        menu.classList.remove('minimized');
     }
+
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.offsetHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+
+    progressBar.style.width = scrollPercent + '%';
 });
+
+
+
+
+
+const carousel = document.querySelector('.carousel');
+const carouselItems = document.querySelectorAll('.carousel-item');
+const prevButton = document.querySelector('.carousel-prev');
+const nextButton = document.querySelector('.carousel-next');
+
+
+let currentIndex = 0;
+
+
+function updateCarousel() {
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % carouselItems.length;
+    updateCarousel();
+}
+
+
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length; 
+    updateCarousel();
+}
+
+
+nextButton.addEventListener('click', () => {
+    nextSlide();
+    resetAutoSlide();
+});
+
+prevButton.addEventListener('click', () => {
+    prevSlide();
+    resetAutoSlide();  
+});
+
+
+let autoSlideInterval = setInterval(nextSlide, 3000); 
+
+
+function resetAutoSlide() {
+    clearInterval(autoSlideInterval); 
+    autoSlideInterval = setInterval(nextSlide, 3000); 
+}
+
+
+
+
 
 
 
@@ -253,6 +306,24 @@ navLinks.forEach(link => {
 
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    const controls = document.querySelector('.mobile-controls');
+    const triggerSection = document.querySelector('.jeux'); // Section à observer
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                controls.classList.remove('hidden'); // Afficher les contrôles
+            } else {
+                controls.classList.add('hidden'); // Cacher les contrôles
+            }
+        });
+    }, {
+        threshold: 0.5 // 50% de la section visible avant de déclencher
+    });
+
+    observer.observe(triggerSection);
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     const skillBars = document.querySelectorAll('.skill-bar');
@@ -276,24 +347,28 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
-    const controls = document.querySelector('.mobile-controls');
-    const triggerSection = document.querySelector('.jeux'); // Section à observer
+    const formations = document.querySelectorAll('.formations ul li');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                controls.classList.remove('hidden'); // Afficher les contrôles
-            } else {
-                controls.classList.add('hidden'); // Cacher les contrôles
-            }
+    formations.forEach(formation => {
+        formation.addEventListener('click', function () {
+            // Enlever la classe active des autres formations
+            formations.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Activer ou désactiver la classe active sur l'élément cliqué
+            formation.classList.toggle('active');
         });
-    }, {
-        threshold: 0.5 // 50% de la section visible avant de déclencher
     });
-
-    observer.observe(triggerSection);
 });
+
+
+
 
 
 
@@ -306,6 +381,6 @@ experiences.forEach((experience) => {
     experience.addEventListener('click', () => {
         // Basculer la classe 'active' pour afficher ou masquer la description
         experience.classList.toggle('active');
-        
+
     });
 });

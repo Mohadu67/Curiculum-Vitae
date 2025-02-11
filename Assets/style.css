@@ -44,6 +44,14 @@ body {
     width: 800px;
 }
 
+strong{
+    color: var(--couleur-bleu);
+}
+h3{
+    text-align: start;
+    margin-left: 70px;
+}
+
 
 /*<------------------------------ Header ---------------------------->*/
 
@@ -58,15 +66,25 @@ header div img {
 
 
 .menu {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background-color: #00051E; 
-    z-index: 1000; 
-    height: 100px; 
-    transition: height 0.3s ease; 
-    padding: 20px 0;
+    background-color: #00051E;
+    z-index: 1000;
+    height: 100px;
+    transition: height 0.3s ease;
+}
+
+.menu.minimized {
+    height: 5px;
+}
+
+.progress-bar {
+    background-color: #3573FB;
+    height: 100%;  
+    width: 0%;
+    transition: width 0.3s ease;
 }
 
 .menu ul {
@@ -86,7 +104,6 @@ header div img {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    font-size: 3vw;
 }
 
 .menu ul li a {
@@ -95,10 +112,14 @@ header div img {
 }
 
 .menu ul li:hover {
-    background-color: #3573FB ;
+    background-color: #3573FB;
     border-radius: 20px;
-    padding: 5px 30px;
     transition: all 0.8s;
+}
+
+
+.menu:hover ul {
+    display: flex;
 }
 
 
@@ -108,6 +129,74 @@ header div {
     padding: 0;
 
 }
+
+
+
+
+
+
+.carousel-container {
+    position: relative;
+    width: 50%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 15px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(255, 255, 255, 0.05);
+}
+
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #3573FB;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+
+
+
+
 
 /*<------------------------------ A propos ---------------------------->*/
 
@@ -171,46 +260,6 @@ button.learn-more:hover {
     color: white;
     margin: 30px;
 }
-
-/*<------------------------------ section compétence ---------------------------->*/
-
-.compétences {
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0;
-}
-
-.compétences div ul {
-    display: flex;
-    justify-content: space-around;
-    list-style-type: none;
-    padding: 0;
-    flex-wrap: wrap;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.compétences div ul li {
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: var(--couleur-bleu);
-    color: white;
-    font-family: var(--font-p);
-    font-size: 12px;
-    width: 150px;
-    box-shadow: 0 15px 50px rgb(255 255 255 / 20%);
-}
-
-.compétences div ul li img {
-    width: 50px;
-    height: 50px;
-    margin: 10px;
-}
-
-
-
-
 
 /*<------------------------------ Soft skills ---------------------------->*/
 
@@ -429,6 +478,65 @@ button#restartButton {
 
 /*<------------------------------ Section Formations ---------------------------->*/
 
+
+/* Animation de saut */
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-5px); /* Déplace l'élément vers le haut */
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-3px); /* Déplace l'élément encore plus légèrement */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Animation de clignotement */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Style pour le texte "Cliquez pour en savoir plus" */
+.click-indicator {
+    position: absolute;
+    bottom: 10px; /* Positionné en bas de l'élément */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+    opacity: 1; /* Assure que l'élément est visible dès le départ */
+    animation: blink 1.5s infinite; /* Animation de clignotement */
+    pointer-events: none; /* Ne gêne pas l'interaction avec l'élément */
+    z-index: 10; /* S'assure que l'élément clignotant est au-dessus des autres éléments */
+}
+
+/* Supprime l'animation au survol de l'élément */
+.formations ul li:hover .click-indicator {
+    animation: none;
+    opacity: 1; /* Rendre le texte plus visible au survol */
+}
+
+/* Cache l'indicateur une fois l'élément agrandi */
+.formations ul li.active .click-indicator {
+    display: none;
+}
+
 .formations ul {
     list-style: none;
     margin: 80px 0;
@@ -436,25 +544,72 @@ button#restartButton {
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-} 
-
+}
 
 .formations ul li {
-
-    background-color: #D9D9D9 3%;
     color: white;
     font-family: var(--font-p);
     font-size: 12px;
     cursor: pointer;
     width: 150px;
+    border: 0.5px solid;
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
-    width: 150px;
-    height: 180px;
-    box-shadow: 0 15px 50px rgb(255 255 255 / 20%);
+    height: 150px;
+    text-align: center;
+    transition: all 0.5s ease;
+    overflow: hidden;
 }
 
+.formations ul li:hover {
+    animation: bounce 0.5s ease-in-out; /* Effectue un saut au survol */
+    z-index: 1; /* Permet de faire ressortir l'élément */
+}
+
+.formations ul li.active {
+    width: 80%; 
+    height: auto;
+    z-index: 1;
+}
+
+.formations ul li p {
+    margin: 5px 0;
+}
+
+.formations ul li .detail {
+    display: none;
+    opacity: 0; /* Initialement caché */
+    transition: opacity 0.3s ease; /* Effet de fondu pour l'apparition */
+}
+
+.formations ul li.active .detail {
+    display: block;
+    opacity: 1; /* Fait apparaître la description détaillée */
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.active ul {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.active ul li {
+    border: none;
+    display: flex;
+    width: 90%;
+    height: fit-content;
+    text-align: start;
+}
+
+strong {
+    white-space: nowrap;
+}
 
 /*<------------------------------ Section experience ---------------------------->*/
 
@@ -522,9 +677,6 @@ button#restartButton {
 @media (min-width: 768px) {
     .mobile-controls {
         display: none;
-    }
-    .menu ul li {
-        font-size: 18px;
     }
 
     .experiences ul li {
