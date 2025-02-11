@@ -479,64 +479,6 @@ button#restartButton {
 /*<------------------------------ Section Formations ---------------------------->*/
 
 
-/* Animation de saut */
-@keyframes bounce {
-    0% {
-        transform: translateY(0);
-    }
-    25% {
-        transform: translateY(-5px); /* Déplace l'élément vers le haut */
-    }
-    50% {
-        transform: translateY(0);
-    }
-    75% {
-        transform: translateY(-3px); /* Déplace l'élément encore plus légèrement */
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-/* Animation de clignotement */
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Style pour le texte "Cliquez pour en savoir plus" */
-.click-indicator {
-    position: absolute;
-    bottom: 10px; /* Positionné en bas de l'élément */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 12px;
-    color: #fff;
-    font-weight: bold;
-    opacity: 1; /* Assure que l'élément est visible dès le départ */
-    animation: blink 1.5s infinite; /* Animation de clignotement */
-    pointer-events: none; /* Ne gêne pas l'interaction avec l'élément */
-    z-index: 10; /* S'assure que l'élément clignotant est au-dessus des autres éléments */
-}
-
-/* Supprime l'animation au survol de l'élément */
-.formations ul li:hover .click-indicator {
-    animation: none;
-    opacity: 1; /* Rendre le texte plus visible au survol */
-}
-
-/* Cache l'indicateur une fois l'élément agrandi */
-.formations ul li.active .click-indicator {
-    display: none;
-}
-
 .formations ul {
     list-style: none;
     margin: 80px 0;
@@ -562,15 +504,9 @@ button#restartButton {
     overflow: hidden;
 }
 
-.formations ul li:hover {
-    animation: bounce 0.5s ease-in-out; /* Effectue un saut au survol */
-    z-index: 1; /* Permet de faire ressortir l'élément */
-}
-
 .formations ul li.active {
     width: 80%; 
     height: auto;
-    z-index: 1;
 }
 
 .formations ul li p {
@@ -601,7 +537,8 @@ button#restartButton {
 
 .active ul li {
     border: none;
-    display: flex;
+    display: flex
+;
     width: 90%;
     height: fit-content;
     text-align: start;
