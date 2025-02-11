@@ -294,3 +294,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     observer.observe(triggerSection);
 });
+
+
+
+
+// Sélectionner toutes les expériences de la liste
+const experiences = document.querySelectorAll('.experiences ul li');
+
+// Ajouter un gestionnaire d'événements pour chaque élément de la liste
+experiences.forEach((experience) => {
+    experience.addEventListener('click', () => {
+        // Basculer la classe 'active' pour afficher ou masquer la description
+        experience.classList.toggle('active');
+        
+    });
+});
