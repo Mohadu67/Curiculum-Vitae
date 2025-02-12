@@ -131,7 +131,7 @@ header div {
 }
 
 
-
+/*<------------------------------ Projet ---------------------------->*/
 
 
 
@@ -163,6 +163,22 @@ header div {
     justify-content: center;
     align-items: center;
     box-shadow: 0 10px 15px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(255, 255, 255, 0.05);
+}
+
+.carousel-item.projet-1 {
+    background-color: #F7F6F2;
+}
+.carousel-item.projet-1 h4 {
+    color: #333;
+    font-size: x-large;
+    margin: 0;
+    font-family: var(--font-titre);
+}
+
+.carousel-item.projet-1 p {
+    color: #333;
+    margin: 0;
+    font-family: var(--font-p);
 }
 
 
@@ -600,7 +616,40 @@ strong {
 
 
 
-
+.footer {
+    background-color: #f7f7f7;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .contact-icons a {
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-icons a img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .contact-icons a:hover {
+    transform: scale(1.1);
+  }
+  
+  .contact-icons a:focus {
+    outline: none;
+    transform: scale(1.1);
+  }
 
 
 

@@ -73,12 +73,12 @@ prevButton.addEventListener('click', () => {
 });
 
 
-let autoSlideInterval = setInterval(nextSlide, 3000); 
+let autoSlideInterval = setInterval(nextSlide, 5000); 
 
 
 function resetAutoSlide() {
     clearInterval(autoSlideInterval); 
-    autoSlideInterval = setInterval(nextSlide, 3000); 
+    autoSlideInterval = setInterval(nextSlide, 5000); 
 }
 
 
@@ -277,12 +277,6 @@ jumpButton.addEventListener("touchend", () => {
 
 const jeux = document.querySelector(".menu");
 const manettes = document.querySelectorAll(".menu ul li");
-
-
-
-
-
-
 
 
 
