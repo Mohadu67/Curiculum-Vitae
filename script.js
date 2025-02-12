@@ -42,6 +42,29 @@ window.addEventListener('scroll', function() {
 
 
 
+const navLinks = document.querySelectorAll(".menu a");
+
+
+navLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const targetId = link.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        targetSection.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    });
+});
+
+
+
+
+
+
+
 //<----------------------------------------------carousel projet--------------------------------------->
 
 const carousel = document.querySelector('.carousel');
@@ -80,12 +103,12 @@ prevButton.addEventListener('click', () => {
 });
 
 
-let autoSlideInterval = setInterval(nextSlide, 50000); 
+let autoSlideInterval = setInterval(nextSlide, 5000); 
 
 
 function resetAutoSlide() {
     clearInterval(autoSlideInterval); 
-    autoSlideInterval = setInterval(nextSlide, 50000); 
+    autoSlideInterval = setInterval(nextSlide, 5000); 
 }
 
 
