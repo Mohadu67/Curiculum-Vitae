@@ -1,3 +1,5 @@
+
+//<----------------------------------------------btn learn more--------------------------------------->
 document.querySelectorAll(".learn-more").forEach(btn => {
     btn.addEventListener("click", function() {
         const moreContent = this.closest(".presentation").querySelector(".more-content");
@@ -14,6 +16,7 @@ document.querySelectorAll(".learn-more").forEach(btn => {
 
 
 
+//<----------------------------------------------indication progression scroll--------------------------------------->
 
 window.addEventListener('scroll', function() {
     const menu = document.querySelector('.menu');
@@ -36,6 +39,10 @@ window.addEventListener('scroll', function() {
 
 
 
+
+
+
+//<----------------------------------------------carousel projet--------------------------------------->
 
 const carousel = document.querySelector('.carousel');
 const carouselItems = document.querySelectorAll('.carousel-item');
@@ -73,12 +80,12 @@ prevButton.addEventListener('click', () => {
 });
 
 
-let autoSlideInterval = setInterval(nextSlide, 5000); 
+let autoSlideInterval = setInterval(nextSlide, 50000); 
 
 
 function resetAutoSlide() {
     clearInterval(autoSlideInterval); 
-    autoSlideInterval = setInterval(nextSlide, 5000); 
+    autoSlideInterval = setInterval(nextSlide, 50000); 
 }
 
 
@@ -87,6 +94,7 @@ function resetAutoSlide() {
 
 
 
+//<----------------------------------------------Mini jeux--------------------------------------->
 
 const restartButton = document.getElementById("restartButton");
 const canvas = document.getElementById("gameCanvas");
@@ -242,8 +250,7 @@ document.addEventListener("click", (e) => {
     }
 });
 
-
-
+//<----------------------------------------------btn jeux mobile--------------------------------------->
 
 const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
@@ -274,46 +281,20 @@ jumpButton.addEventListener("touchend", () => {
 });
 
 
-
-const jeux = document.querySelector(".menu");
-const manettes = document.querySelectorAll(".menu ul li");
-
-
-
-
-const navLinks = document.querySelectorAll(".menu a");
-
-
-navLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        const targetId = link.getAttribute("href").substring(1);
-        const targetSection = document.getElementById(targetId);
-
-        targetSection.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-    });
-});
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const controls = document.querySelector('.mobile-controls');
-    const triggerSection = document.querySelector('.jeux'); // Section à observer
+    const triggerSection = document.querySelector('.jeux');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                controls.classList.remove('hidden'); // Afficher les contrôles
+                controls.classList.remove('hidden');
             } else {
-                controls.classList.add('hidden'); // Cacher les contrôles
+                controls.classList.add('hidden');
             }
         });
     }, {
-        threshold: 0.5 // 50% de la section visible avant de déclencher
+        threshold: 0.5
     });
 
     observer.observe(triggerSection);
@@ -328,11 +309,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 const bar = entry.target;
                 const value = bar.getAttribute('data-value');
                 bar.style.width = value + '%';
-                observer.unobserve(bar); // Stop observing once the bar is animated
+                observer.unobserve(bar);
             }
         });
     }, {
-        threshold: 0.5 // Trigger when 50% of the section is visible
+        threshold: 0.5
     });
 
     skillBars.forEach(bar => {
@@ -344,18 +325,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+//<----------------------------------------------contenu formation--------------------------------------->
 
 document.addEventListener("DOMContentLoaded", function () {
     const formations = document.querySelectorAll('.formations ul li');
 
     formations.forEach(formation => {
         formation.addEventListener('click', function () {
-            // Enlever la classe active des autres formations
+
             formations.forEach(item => {
                 item.classList.remove('active');
             });
 
-            // Activer ou désactiver la classe active sur l'élément cliqué
             formation.classList.toggle('active');
         });
     });
@@ -364,17 +345,94 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
-// Sélectionner toutes les expériences de la liste
+//<----------------------------------------------contenu experience--------------------------------------->
 const experiences = document.querySelectorAll('.experiences ul li');
 
-// Ajouter un gestionnaire d'événements pour chaque élément de la liste
 experiences.forEach((experience) => {
     experience.addEventListener('click', () => {
-        // Basculer la classe 'active' pour afficher ou masquer la description
+
         experience.classList.toggle('active');
 
     });
 });
+
+
+// <----------------------------------------------API Json en phase d'intégration--------------------------------------->
+
+// const contenueFormation = document.querySelector(".formations");
+// const contenueExperience = document.querySelector(".experiences");
+
+// fetch('data/db.json')
+// .then(function(response) {
+//     return response.json();
+// })
+// .then(function(data) {
+
+//     // *<---------------Articles page IMC------------------>*//
+
+//     let htmlIMC = "";
+//     if (contenueExperience) { 
+//         if (data.contenueExperience) {
+//             data.contenueExperience.forEach(function(contenueExperience) {
+//                 htmlIMC += `
+//                 <li>
+//                     <div>
+//                         <h4>${contenueExperience.titre}</h4>
+//                         <p>${contenueExperience.emplacement}</p>
+//                         <p>${contenueExperience.periode}</p>
+//                     </div>
+//                     <div class="description">
+//                         <p>${contenueExperience.description}</p>
+//                     </div>
+//                 </li>
+//                 `;
+//             });
+//             contenueExperience.innerHTML = htmlIMC;
+//         } else {
+//             console.log("Aucun article IMC trouvé dans le JSON.");
+//         }
+//     }
+
+//     // *<---------------Articles page Calorie------------------>*//
+//     let htmlCalorie = "";
+//     if (contenueCalorie) { 
+//         if (data.contenueArticlesCalorie) {
+//             data.contenueArticlesCalorie.forEach(function(articleCalorie) {
+//                 htmlCalorie += `
+//                     <h2>${articleCalorie.titre}</h2>
+//                     <div>
+//                         <p>${articleCalorie.description}</p>
+//                         <div class="more-content">
+//                             <p>${articleCalorie.excedent}</p>
+//                         </div>
+//                         <button class="learn-more">Lire plus</button>
+//                     </div> 
+//                     <img src="assets/img/${articleCalorie.image}" alt="${articleCalorie.alt}">
+//                 `;
+//             });
+//             contenueCalorie.innerHTML = htmlCalorie;
+//         } else {
+//             console.log("Aucun article Calorie trouvé dans le JSON.");
+//         }
+//     }
+
+//     // *<---------------Gestion du learnMore------------------>*//
+//     const btns = document.querySelectorAll(".learn-more");
+
+//     btns.forEach(function(btn) {
+//         btn.addEventListener("click", function() {
+//             const moreContent = this.previousElementSibling;
+
+//             if (moreContent.classList.contains("open")) {
+//                 moreContent.classList.remove("open");
+//                 this.textContent = "Lire plus";
+//             } else {
+//                 moreContent.classList.add("open");
+//                 this.textContent = "Lire moins";
+//             }
+//         });
+//     });
+// })
+// .catch(function(error) {
+//     console.error("Erreur lors du fetch :", error);
+// });

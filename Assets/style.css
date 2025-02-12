@@ -131,9 +131,38 @@ header div {
 }
 
 
+/*<------------------------------ icone ---------------------------->*/
+
+
+.floating-icons svg {
+    color: white;
+}
+
+.floating-icons {
+    position: fixed;
+    right: 20px;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin: 20px;  
+}
+
+.floating-icons a {
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.floating-icons a:hover {
+    transform: scale(1.2);
+}
+
+.floating-icons a:focus {
+    outline: none;
+    transform: scale(1.2);
+}
+
 /*<------------------------------ Projet ---------------------------->*/
-
-
 
 .carousel-container {
     position: relative;
@@ -165,9 +194,12 @@ header div {
     box-shadow: 0 10px 15px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(255, 255, 255, 0.05);
 }
 
+
+/*<------------------------------ Projet1 -->*/
 .carousel-item.projet-1 {
     background-color: #F7F6F2;
 }
+
 .carousel-item.projet-1 h4 {
     color: #333;
     font-size: x-large;
@@ -176,6 +208,47 @@ header div {
 }
 
 .carousel-item.projet-1 p {
+    color: #333;
+    margin: 0;
+    font-family: var(--font-p);
+}
+/*<------------------------------ Projet2 -->*/
+
+.carousel-item.projet-2 {
+    background-color: #F7F6F2;
+}
+
+.carousel-item.projet-2 h4 {
+    color: #333;
+    font-size: x-large;
+    margin: 0;
+    font-family: var(--font-titre);
+}
+
+.carousel-item.projet-2 p {
+    color: #333;
+    margin: 0;
+    font-family: var(--font-p);
+}
+
+.carousel-item.projet-2 img {
+    height: 98px;
+}
+
+/*<------------------------------ Projet3 -->*/
+
+.carousel-item.projet-3 {
+    background-color: #F7F6F2;
+}
+
+.carousel-item.projet-3 h4 {
+    color: #333;
+    font-size: x-large;
+    margin: 0;
+    font-family: var(--font-titre);
+}
+
+.carousel-item.projet-3 p {
     color: #333;
     margin: 0;
     font-family: var(--font-p);
@@ -617,7 +690,8 @@ strong {
 
 
 .footer {
-    background-color: #f7f7f7;
+    border: 1px solid;
+    border-radius: 8px;
     padding: 20px;
     text-align: center;
     position: relative;
@@ -629,17 +703,12 @@ strong {
   .contact-icons {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 100px;
   }
   
   .contact-icons a {
     text-decoration: none;
     transition: transform 0.3s ease;
-  }
-  
-  .contact-icons a img {
-    width: 30px;
-    height: 30px;
   }
   
   .contact-icons a:hover {
@@ -649,6 +718,10 @@ strong {
   .contact-icons a:focus {
     outline: none;
     transform: scale(1.1);
+  }
+
+  footer svg {
+    color: white;
   }
 
 
@@ -672,6 +745,15 @@ strong {
 
     .experiences ul li .description {
         width: 500px;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    .floating-icons {
+
+        right: 10%;
     }
 
 }
