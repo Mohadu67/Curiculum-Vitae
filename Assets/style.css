@@ -41,21 +41,20 @@ html {
 body {
 
     font-family: var(--font-titre);
-    background: radial-gradient(circle at top, #001F54, #00051E);
-    /* background: #00051E; */
+    /* background: radial-gradient(circle at top, #001F54, #00051E); */
+    background: #00051E;
     color: white;
     margin: 0 auto;
     padding: 0;
     text-align: center;
 }
 
-body {
+/* body {
     user-select: none;
-    background-image: url('Assets/img/BG-CV.svg');
     background-repeat: no-repeat; 
     background-position: center; 
     width: 100%;
-}
+} */
 
 strong{
     color: var(--couleur-bleu);
@@ -67,6 +66,63 @@ h3{
 section {
     max-width: 1500px;
     margin: 0 auto;
+}
+
+
+.svg-container {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    overflow: hidden; 
+}
+
+
+.animate-group-1 {
+    animation: float 15s ease-in-out infinite;
+    
+}
+
+.animate-group-2 {
+    animation: rotate 60s linear infinite;
+    transform-origin: center; 
+}
+
+
+.animate-group-3 {
+    animation: pulse 10s ease-in-out infinite;
+}
+
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
 }
 
 
