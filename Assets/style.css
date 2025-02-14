@@ -51,9 +51,9 @@ body {
 
 body {
     user-select: none;
-    background-image: url('/Assets/img/BG-CV.svg');
-    background-repeat: no-repeat; /* Empêche la répétition de l'image */
-    background-position: center; /* Centre l'image horizontalement et verticalement */
+    background-image: url('Assets/img/BG-CV.svg');
+    background-repeat: no-repeat; 
+    background-position: center; 
     width: 100%;
 }
 
