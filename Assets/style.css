@@ -51,6 +51,10 @@ body {
 
 body {
     user-select: none;
+    background-image: url('/Assets/img/BG-CV.svg');
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    background-position: center; /* Centre l'image horizontalement et verticalement */
+    width: 100%;
 }
 
 strong{
@@ -58,6 +62,11 @@ strong{
 }
 h3{
     text-align: center;
+}
+
+section {
+    max-width: 1500px;
+    margin: 0 auto;
 }
 
 
@@ -103,6 +112,7 @@ header div img {
     border-radius: 15px;
     width: fit-content;
     padding: 0;
+    background: #333;
 }
 
 .menu ul li {
@@ -537,25 +547,29 @@ button#restartButton {
     height: 300px;
 }
 
-.hard-skills {
+.skills {
     display: flex;
     list-style: none;
     justify-content: space-evenly;
-    padding: 10px;
-    gap: 20px;
+    padding: 15px;
+    background-color: #3131315e;
+    border-radius: 15px;
+    width: 100%;
+    height: 150px;
 }
 
 .contenu p {
     font-family: var(--font-p);
-    font-size: 16px;
+    font-size: 12px;
     color: white;
     text-align: start;
     margin: 10px;
+    white-space: nowrap;
 }
 
 /* Container for each skill bar */
 .skill-container {
-    width: 100%;
+    width: 80%;
     background-color: #ccc;
     border-radius: 8px;
     overflow: hidden;
@@ -573,6 +587,23 @@ button#restartButton {
 
 .contenu {
     width: 200PX;
+}
+
+h5 {
+    font-size: 0.8rem;
+    animation: pulse 2s infinite; 
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2); 
+    }
+    100% {
+        transform: scale(1); 
+    }
 }
 
 
