@@ -51,7 +51,7 @@ body {
 
 body {
     user-select: none;
-    background-image: url('../img/BG-CV.svg');
+    background-image: url('Assets/img/BG-CV.svg');
     background-repeat: no-repeat; 
     background-position: center; 
     width: 100%;
