@@ -41,20 +41,12 @@ html {
 body {
 
     font-family: var(--font-titre);
-    /* background: radial-gradient(circle at top, #001F54, #00051E); */
     background: #00051E;
     color: white;
     margin: 0 auto;
     padding: 0;
     text-align: center;
 }
-
-/* body {
-    user-select: none;
-    background-repeat: no-repeat; 
-    background-position: center; 
-    width: 100%;
-} */
 
 strong{
     color: var(--couleur-bleu);
@@ -68,7 +60,7 @@ section {
     margin: 0 auto;
 }
 
-
+/*<------------------------------ BG Animation---------------------------->*/
 .svg-container {
     position: fixed; 
     top: 0;
@@ -314,7 +306,7 @@ header div {
 /*<------------------------------ Projet3 -->*/
 
 .carousel-item.projet-3 {
-    background-color: #F7F6F2;
+    background-color: #733224;
 }
 
 .carousel-item.projet-3 h4 {
@@ -598,7 +590,7 @@ button#restartButton {
 
 .competences-web {
     max-width: 600px;
-    width: 80%;
+    /* width: 80%; */
     margin: 60px auto;
     height: 300px;
 }
@@ -610,8 +602,9 @@ button#restartButton {
     padding: 15px;
     background-color: #3131315e;
     border-radius: 15px;
-    width: 100%;
+    width: 80%;
     height: 150px;
+    margin: 0 auto;
 }
 
 .contenu p {
@@ -648,6 +641,8 @@ button#restartButton {
 h5 {
     font-size: 0.8rem;
     animation: pulse 2s infinite; 
+    width: fit-content;
+    margin: 0 auto;
 }
 
 @keyframes pulse {
@@ -673,6 +668,7 @@ h5 {
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+    padding: 0;
 }
 
 .formations ul li {
@@ -692,7 +688,7 @@ h5 {
 }
 
 .formations ul li.active {
-    width: 80%;
+    width: 60%;
     height: auto;
 }
 
@@ -729,6 +725,7 @@ h5 {
     display: flex;
     height: fit-content;
     text-align: start;
+    margin: 5px;
 }
 
 strong {
@@ -739,12 +736,13 @@ strong {
 
 .experiences ul {
     list-style: none;
-    margin: 80px;
+    margin: 20px auto;
     padding: 0;
     display: flex;
     flex-direction: column;
     gap: 15px;
     align-items: center;
+    width: 250px;
 }
 
 .experiences ul li {
@@ -787,7 +785,7 @@ strong {
     bottom: 0;
     width: 80%;
     box-shadow: 0 -2px 10px rgba(255, 254, 254, 0.1);
-    margin: 0 auto;
+    margin: 50px auto;
   }
   
   .contact-icons {
@@ -813,10 +811,6 @@ strong {
   footer svg {
     color: white;
   }
-
-
-
-
 
 
 
@@ -862,5 +856,17 @@ strong {
 
         right: 10%;
     }
+    body{
+        max-width: 1000px;
+    }
+
+    .floating-icons {
+        right: 25%;
+    }
 
 }
+
+
+/* header, section, footer {
+    display: none;
+} */
