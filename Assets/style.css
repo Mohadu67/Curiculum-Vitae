@@ -1,16 +1,16 @@
 @font-face {
     font-family: 'Manrope-bold';
-    src: url('../fonts/Manrope-Bold.ttf') format('truetype');
+    src: url('/Assets/fonts/Manrope-Bold.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Manrope-ExtraBold';
-    src: url('../fonts/Manrope-ExtraBold.ttf') format('truetype');
+    src: url('/Assets/fonts/Manrope-ExtraBold.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Manrope-regular';
-    src: url('../fonts/Manrope-Regular.ttf') format('truetype');
+    src: url('/Assets/fonts/Manrope-Regular.ttf') format('truetype');
 }
 
 /*<------------------------------ Reset global ---------------------------->*/
@@ -21,6 +21,7 @@ html, body, img, video, canvas, svg {
     box-sizing: border-box;
     width: 100%;
 }
+
 
 html {
     touch-action: manipulation;
@@ -123,10 +124,8 @@ section {
 
 header div img {
     width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 20px;
     margin-top: 300px;
+    filter:drop-shadow(0 0 14px grey)
 }
 
 
@@ -156,11 +155,12 @@ header div img {
     margin: 30px auto;
     display: flex;
     white-space: nowrap;
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 15px;
     width: fit-content;
     padding: 0;
-    background: #333;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 30px rgba(227, 228, 237, 0.37);
 }
 
 .menu ul li {
@@ -201,14 +201,9 @@ header div {
 
 /*<------------------------------ icone ---------------------------->*/
 
-
-.floating-icons svg {
-    color: white;
-}
-
 .floating-icons {
     position: fixed;
-    right: 10px;
+    right: 8%;
     top: 30%;
     display: flex;
     flex-direction: column;
@@ -217,18 +212,61 @@ header div {
 }
 
 .floating-icons a {
-    text-decoration: none;
-    transition: transform 0.3s ease;
+    width: 3rem;
+    height: 3rem;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
 }
 
-.floating-icons a:hover {
-    transform: scale(1.2);
+.floating-icons a:hover > .bi {
+    transform: scale(1.1);
+    color: #f1f1f1;
 }
 
-.floating-icons a:focus {
-    outline: none;
-    transform: scale(1.2);
+.floating-icons a:before {
+    content: "";
+    position: absolute;
+    width: 130%;
+    height: 130%;
+    left: -110%;
+    top: 80%;
+    transform: rotate(45deg);
+    transition: all 0.7s ease;
 }
+
+.floating-icons a.telephone:hover:before {
+    background-color: #50C878;
+}
+
+.floating-icons a.linkedin:hover:before {
+    background-color: #3573FB;
+}
+
+.floating-icons a.github:hover:before {
+    background-color: black;
+}
+
+.floating-icons a:hover:before {
+    animation: slide 0.7s forwards;
+}
+
+
+@keyframes slide {
+    50% {
+      left: 10%;
+      top: -40%;
+    }
+    100% {
+      left: -15%;
+      top: -15%;
+    }
+}
+
 
 /*<------------------------------ Projet ---------------------------->*/
 
@@ -788,30 +826,90 @@ strong {
     margin: 50px auto;
   }
   
-  .contact-icons {
+.contact-icons {
     display: flex;
     justify-content: center;
-    gap: 50px;
-}
+    align-items: center;
+    gap: 2rem;
+  }
   
   .contact-icons a {
-    text-decoration: none;
-    transition: transform 0.3s ease;
-  }
-  
-  .contact-icons a:hover {
-    transform: scale(1.1);
-  }
-  
-  .contact-icons a:focus {
-    outline: none;
-    transform: scale(1.1);
-  }
+    width: 3.625rem;
+    height: 3.625rem;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+}
 
-  footer svg {
-    color: white;
-  }
+.contact-icons a:hover > .bi {
+    transform: scale(1.3); 
+    color: #f1f1f1;
+}
 
+.contact-icons a:before {
+    content: "";
+    position: absolute;
+    width: 130%;
+    height: 130%;
+    left: -110%;
+    top: 80%;
+    transform: rotate(45deg);
+    transition: all 0.7s ease;
+}
+
+.contact-icons a:before {
+    background-color: grey;
+}
+
+.contact-icons a.telephone:hover:before {
+    background-color: #50C878;
+}
+
+
+.contact-icons a.linkedin:hover:before {
+    background-color: #3573FB;
+}
+
+
+.contact-icons a.github:hover:before {
+    background-color: black;
+}
+
+
+.contact-icons a:hover:before {
+    animation: slide 0.7s forwards; 
+}
+
+.bi-telephone {
+    color:#50C878;
+}
+
+.bi-github {
+    color: black;
+}
+
+.bi-envelope-at, .bi-linkedin {
+    color: #3573FB;
+}
+
+footer a {
+    margin: 10px 0px;
+}
+
+@keyframes slide {
+    50% {
+      left: 10%;
+      top: -40%;
+    }
+    100% {
+      left: -15%;
+      top: -15%;
+    }
+}
 
 
 
@@ -853,15 +951,15 @@ strong {
 @media (min-width: 1024px) {
 
     .floating-icons {
+        right: 8%;
+    }
 
-        right: 10%;
+    .floating-icons a {
+        width: 4.625rem;
+        height: 4.625rem;
     }
     body{
         max-width: 1000px;
-    }
-
-    .floating-icons {
-        right: 25%;
     }
 
 }

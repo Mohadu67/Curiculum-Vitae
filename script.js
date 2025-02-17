@@ -380,6 +380,51 @@ experiences.forEach((experience) => {
 });
 
 
+
+
+
+
+
+
+
+
+// Utilise let pour déclarer currentIndex de manière sûre
+let currrentIndex = 0;
+
+// Sélectionne toutes les icônes du footing
+const icons = document.querySelectorAll('.floating-icons a');
+
+function animateIcon() {
+    // Supprime la classe 'animated' de toutes les icônes
+    icons.forEach(icon => icon.classList.remove('animated'));
+
+    // Ajoute la classe 'animated' à l'icône courante
+    icons[currentIndex].classList.add('animated');
+
+    // Change l'index pour la prochaine icône
+    currentIndex = (currentIndex + 1) % icons.length; // Boucle à la première icône une fois à la fin
+
+    // Supprime l'animation après un certain temps (exemple: 1 seconde)
+    setTimeout(() => {
+        icons[currentIndex].classList.remove('animated');
+    }, 1000); // Durée de l'animation en millisecondes
+}
+
+// Exécute la fonction toutes les 15 secondes (15 000 millisecondes)
+setInterval(animateIcon, 15000);
+
+// Démarre immédiatement la première animation
+animateIcon();
+
+
+
+
+
+
+
+
+
+
 // <----------------------------------------------API Json en phase d'intégration--------------------------------------->
 
 // const contenueFormation = document.querySelector(".formations");
