@@ -123,11 +123,10 @@ const restartButton = document.getElementById("restartButton");
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-
 canvas.width = 600;
 canvas.height = 400;
 
-
+// Player setup
 const player = {
     x: 50,
     y: 300,
@@ -142,14 +141,16 @@ const player = {
     grounded: false
 };
 
-
-const platforms = [
-    { x: 50, y: 350, width: 100, height: 10, color: "orange" },  // HTML
-    { x: 200, y: 280, width: 100, height: 10, color: "blue" },   // CSS
-    { x: 350, y: 210, width: 100, height: 10, color: "yellow" }, // JavaScript
-    { x: 500, y: 140, width: 100, height: 10, color: "purple" }  // React
+// Initial static platforms
+let platforms = [
+    { x: 50, y: 350, width: 100, height: 10, color: "orange", moving: false },
+    { x: 200, y: 280, width: 100, height: 10, color: "blue", moving: false },
+    { x: 350, y: 210, width: 100, height: 10, color: "yellow", moving: false },
+    { x: 500, y: 140, width: 100, height: 10, color: "purple", moving: false }
 ];
 
+// Game control variables
+let difficultyIncreased = false; // Flag to increase difficulty only once
 
 const keys = {
     left: false,
@@ -157,8 +158,12 @@ const keys = {
     jump: false
 };
 
-
+// Prevent the default behavior of space and arrow keys
 window.addEventListener("keydown", (e) => {
+    if (["ArrowLeft", "ArrowRight", " "].includes(e.key)) {
+        e.preventDefault();  // Disable default behavior like scrolling
+    }
+
     if (e.key === "ArrowLeft" || e.key === "q") keys.left = true;
     if (e.key === "ArrowRight" || e.key === "d") keys.right = true;
     if (e.key === " " || e.key === "w") keys.jump = true;
@@ -170,9 +175,8 @@ window.addEventListener("keyup", (e) => {
     if (e.key === " " || e.key === "w") keys.jump = false;
 });
 
-
+// Game update logic
 function update() {
-
     if (keys.left) {
         player.velocityX = -player.speed;
     } else if (keys.right) {
@@ -181,23 +185,23 @@ function update() {
         player.velocityX = 0;
     }
 
-
     player.velocityY += player.gravity;
     player.y += player.velocityY;
     player.x += player.velocityX;
 
-
+    // Check if player fell off the canvas
     if (player.y > canvas.height) {
         restartButton.style.display = "flex";
         setTimeout(() => {
             restartButton.style.opacity = 1;
         }, 300);
-        return; 
+        return;
     }
 
-
     player.grounded = false;
-    for (let platform of platforms) {
+
+    // Collision with platforms
+    platforms.forEach(platform => {
         if (
             player.x < platform.x + platform.width &&
             player.x + player.width > platform.x &&
@@ -207,70 +211,99 @@ function update() {
             player.grounded = true;
             player.velocityY = 0;
             player.y = platform.y - player.height;
-
             player.color = platform.color;
         }
-    }
 
+        // Move platforms only if the difficulty has increased
+        if (platform.moving && difficultyIncreased) {
+            platform.x += platform.directionX;
 
+            // Reverse direction when hitting canvas edges
+            if (platform.x <= 0 || platform.x + platform.width >= canvas.width) {
+                platform.directionX *= -1;
+            }
+        }
+    });
+
+    // Jump only if the player is on a platform
     if (keys.jump && player.grounded) {
         player.velocityY = player.jumpPower;
-        player.grounded = false; 
+        player.grounded = false;
     }
 
-
+    // Boundaries for player movement
     if (player.x < 0) player.x = 0;
     if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+
+    // Check if the player has reached a height to increase difficulty
+    if (player.y <= 100 && !difficultyIncreased) {
+        increaseDifficulty();
+    }
 }
 
-
+// Draw the game components
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-
+    // Draw player
     ctx.fillStyle = player.color;
     ctx.fillRect(player.x, player.y, player.width, player.height);
 
-
-    for (let platform of platforms) {
+    // Draw platforms
+    platforms.forEach(platform => {
         ctx.fillStyle = platform.color;
         ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
-    }
+    });
 }
 
+// Function to increase difficulty by making platforms move
+function increaseDifficulty() {
+    difficultyIncreased = true; // Ensure the difficulty increases only once
 
-function gameLoop() {
-    update();
-    draw();
-    requestAnimationFrame(gameLoop);
+    // Make platforms move after increasing difficulty
+    platforms.forEach(platform => {
+        platform.moving = true;
+        platform.directionX = Math.random() > 0.5 ? 1.5 : -1.5; // Random horizontal movement
+    });
 }
 
-
-gameLoop();
-
-
-restartButton.addEventListener("click", function () {
-
+// Reset game state when restart button is clicked
+function resetGame() {
     player.x = 50;
     player.y = 300;
     player.velocityX = 0;
     player.velocityY = 0;
     player.grounded = false;
 
+    // Reset platforms to their original positions and stop movement
+    platforms = [
+        { x: 50, y: 350, width: 100, height: 10, color: "orange", moving: false },
+        { x: 200, y: 280, width: 100, height: 10, color: "blue", moving: false },
+        { x: 350, y: 210, width: 100, height: 10, color: "yellow", moving: false },
+        { x: 500, y: 140, width: 100, height: 10, color: "purple", moving: false }
+    ];
 
+    difficultyIncreased = false; // Reset difficulty flag
+
+    // Hide the restart button
     restartButton.style.opacity = 0;
     setTimeout(() => {
         restartButton.style.display = "none";
     }, 500);
-});
+}
 
+// Game loop to continuously update and draw
+function gameLoop() {
+    update();
+    draw();
+    requestAnimationFrame(gameLoop);
+}
 
-document.addEventListener("click", (e) => {
-    if (!canvas.contains(e.target)) {
-        document.body.style.overflow = "auto";
-    } else {
-        document.body.style.overflow = "hidden"; 
-    }
+gameLoop();
+
+// Restart button functionality
+restartButton.addEventListener("click", function () {
+    resetGame();
 });
 
 //<----------------------------------------------btn jeux mobile--------------------------------------->
