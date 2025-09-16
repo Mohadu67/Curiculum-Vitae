@@ -648,6 +648,139 @@ animateIcon();
 
 
 
+// Fetch content from data/db.json and render sections dynamically
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('data/db.json')
+        .then(res => res.json())
+        .then(data => {
+            // Soft Skills
+            const softContainer = document.getElementById('softSkillsContainer');
+            if (softContainer && Array.isArray(data.softSkills)) {
+                softContainer.innerHTML = data.softSkills.map(s => `
+                    <div class="skill">
+                        <h4>${s.title}</h4>
+                        <p>${s.desc}</p>
+                    </div>
+                `).join('');
+            }
+
+            // Logos (marquee track)
+            const track = document.getElementById('logosTrack');
+            if (track && Array.isArray(data.logos)) {
+                const setA = data.logos.map(l => `
+                    <div class="logo-item" data-desc="${l.desc || ''}"><img src="${l.src}" alt="${l.alt}"></div>
+                `).join('');
+                const setB = data.logos.map(l => `
+                    <div class="logo-item" aria-hidden="true"><img src="${l.src}" alt=""></div>
+                `).join('');
+                track.innerHTML = setA + setB;
+            }
+
+            // Experiences
+            const expUl = document.querySelector('.experiences ul#experience');
+            if (expUl && Array.isArray(data.experiences)) {
+                expUl.innerHTML = data.experiences.map(e => `
+                    <li>
+                        <div>
+                            <h4>${e.title}</h4>
+                            <p>${e.location}</p>
+                            <p>${e.period}</p>
+                        </div>
+                        <div class="description">
+                            <p>${e.description}</p>
+                        </div>
+                    </li>
+                `).join('');
+            }
+
+            // Formations
+            const formUl = document.querySelector('#formations .formations ul, #formationsList');
+            if (formUl && Array.isArray(data.formations)) {
+                formUl.innerHTML = data.formations.map((f, i) => `
+                    <li>
+                        <div>
+                            <h4>${f.title}</h4>
+                            <p>${f.org}</p>
+                            <p>${f.period}</p>
+                        </div>
+                        <div class="detail hidden" id="formation-detail-db-${i}">
+                            <p>${f.detail}</p>
+                        </div>
+                    </li>
+                `).join('');
+            }
+
+            // Re-init interactive behaviors for newly injected nodes
+            initExperiencesUI();
+            initFormationsUI();
+            initLogosModalUI();
+            initHintSheenAndRipple();
+        })
+        .catch(err => console.error('Erreur lors du chargement du JSON:', err));
+});
+
+function initExperiencesUI() {
+    const items = document.querySelectorAll('.experiences ul li');
+    items.forEach(li => {
+        li.addEventListener('click', () => li.classList.toggle('active'));
+    });
+}
+
+function initFormationsUI() {
+    const items = document.querySelectorAll('.formations ul li');
+    const backdrop = document.querySelector('.formation-backdrop');
+    if (!items.length) return;
+    const showBackdrop = () => { if (backdrop) { backdrop.classList.add('show'); backdrop.setAttribute('aria-hidden', 'false'); } };
+    const hideBackdrop = () => { if (backdrop) { backdrop.classList.remove('show'); backdrop.setAttribute('aria-hidden', 'true'); } };
+    const closeAll = () => { items.forEach(li => { li.classList.remove('active'); li.setAttribute('aria-expanded', 'false'); const d = li.querySelector('.detail'); if (d) d.setAttribute('aria-hidden', 'true'); }); };
+    items.forEach((item, idx) => {
+        item.setAttribute('role', 'button'); item.setAttribute('tabindex', '0');
+        const detail = item.querySelector('.detail');
+        if (detail) { if (!detail.id) detail.id = `formation-detail-${idx}`; item.setAttribute('aria-controls', detail.id); item.setAttribute('aria-expanded', 'false'); detail.setAttribute('aria-hidden', 'true'); }
+        const toggle = () => { const isActive = item.classList.contains('active'); closeAll(); if (!isActive) { item.classList.add('active'); item.setAttribute('aria-expanded', 'true'); if (detail) detail.setAttribute('aria-hidden', 'false'); item.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); showBackdrop(); } else { hideBackdrop(); } };
+        item.addEventListener('click', toggle);
+        item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') { e.preventDefault(); toggle(); } });
+    });
+    backdrop && backdrop.addEventListener('click', () => { closeAll(); hideBackdrop(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeAll(); hideBackdrop(); } });
+}
+
+function initLogosModalUI() {
+    const track = document.querySelector('.logo-carousel .marquee__track');
+    const modal = document.getElementById('logoModal');
+    const inner = document.getElementById('logoCardInner');
+    const front = document.getElementById('logoCardFront');
+    const back = document.getElementById('logoCardBack');
+    if (!modal || !track) return;
+    document.querySelectorAll('.logo-carousel .logo-item').forEach(item => {
+        item.setAttribute('tabindex', '0'); item.setAttribute('role', 'button');
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            const title = (img && img.alt) || item.getAttribute('data-title') || 'Technologie';
+            const desc = item.getAttribute('data-desc') || img?.getAttribute('data-desc') || `Découvrir ${title}.`;
+            const src = img ? img.src : '';
+            modal.setAttribute('aria-hidden', 'false');
+            front.innerHTML = ''; const imgel = document.createElement('img'); imgel.src = src; imgel.alt = title; front.appendChild(imgel);
+            back.innerHTML = ''; const h4 = document.createElement('h4'); h4.textContent = title; const p = document.createElement('p'); p.textContent = desc; back.appendChild(h4); back.appendChild(p);
+            inner.classList.remove('flipped'); track.classList.add('paused');
+        });
+        item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') { e.preventDefault(); item.click(); } });
+    });
+}
+
+function initHintSheenAndRipple() {
+    const clickableLis = [ ...document.querySelectorAll('.formations ul li'), ...document.querySelectorAll('.experiences ul li') ];
+    if (!clickableLis.length) return;
+    const hinted = new WeakSet();
+    const hintObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (!entry.isIntersecting) return; const el = entry.target; if (hinted.has(el)) return; hinted.add(el); el.classList.add('hint-bounce'); setTimeout(() => el.classList.remove('hint-bounce'), 1400); hintObserver.unobserve(el); }); }, { threshold: 0.6 });
+    clickableLis.forEach(li => hintObserver.observe(li));
+    const sheenIntervals = new WeakMap();
+    const runSheen = (el) => { el.classList.add('sheen-run'); setTimeout(() => el.classList.remove('sheen-run'), 1100); };
+    const sheenObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { const el = entry.target; if (entry.isIntersecting) { runSheen(el); if (!sheenIntervals.has(el)) { const id = setInterval(() => runSheen(el), 5000); sheenIntervals.set(el, id); } } else { const id = sheenIntervals.get(el); if (id) { clearInterval(id); sheenIntervals.delete(el); } } }); }, { threshold: 0.4 });
+    clickableLis.forEach(li => sheenObserver.observe(li));
+    const createRipple = (e, target) => { const rect = target.getBoundingClientRect(); const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left; const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top; const span = document.createElement('span'); span.className = 'ripple'; span.style.left = `${x}px`; span.style.top = `${y}px`; target.appendChild(span); setTimeout(() => span.remove(), 700); };
+    clickableLis.forEach(li => { li.addEventListener('click', (e) => createRipple(e, li)); li.addEventListener('touchstart', (e) => { createRipple(e, li); }, { passive: true }); });
+}
 document.addEventListener('DOMContentLoaded', () => {
     const clickableLis = [
         ...document.querySelectorAll('.formations ul li'),
