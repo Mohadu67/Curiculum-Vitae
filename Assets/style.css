@@ -152,7 +152,6 @@ header { position: relative; z-index: 2000; }
     }
 }
 
-/* Respect user motion preferences */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation: none !important;
@@ -167,7 +166,7 @@ header { position: relative; z-index: 2000; }
 
 header div img {
     width: 150px;
-    margin:200px auto 0 auto;
+    margin:150px auto 0 auto;
     filter:drop-shadow(0 0 14px grey)
 }
 
@@ -177,7 +176,7 @@ header div img {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 3000; /* ensure always above other content/overlays */
+    z-index: 3000; 
     height: 25px;
     transition: height 0.3s ease;
 }
@@ -250,7 +249,7 @@ header div {
 .actions {
     display: flex;
     justify-content: space-evenly;
-    margin: 100px auto;
+    margin: 50px auto;
 }
 
 .actionbtn {
@@ -267,6 +266,7 @@ header div {
     box-shadow: 0 8px 20px rgba(53,115,251,.35), inset 0 1px 0 rgba(255,255,255,.2);
     transition: transform .15s ease, box-shadow .2s ease, background .2s ease, filter .2s ease;
     will-change: transform;
+    font-size: 14px;
 }
 
 .actionbtn:hover {
@@ -1433,9 +1433,40 @@ footer a {
     padding: 16px;
 }
 .logo-card__front img { max-width: 70%; max-height: 70%; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,.35)); }
-.logo-card__back { transform: rotateY(180deg); text-align: left; color: #f2f5ff; }
-.logo-card__back h4 { margin: 0 0 8px; font-family: var(--font-titre); }
-.logo-card__back p { margin: 0; font-family: var(--font-p); line-height: 1.55; }
+.logo-card__back {
+    transform: rotateY(180deg);
+    color: #f2f5ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 18px 16px 16px;
+    overflow: hidden;
+}
+.logo-card__back h4 {
+    margin: 0 0 10px;
+    font-family: var(--font-titre);
+    font-size: 18px;
+    letter-spacing: .3px;
+    position: relative;
+}
+.logo-card__back h4::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin: 8px auto 0;
+    background: linear-gradient(90deg, transparent, var(--couleur-bleu), transparent);
+    border-radius: 2px;
+}
+.logo-card__back p {
+    margin: 6px 0 0;
+    font-family: var(--font-p);
+    line-height: 1.6;
+    color: #eaf1ff;
+    max-width: 90%;
+}
 .formations ul li::after,
 .experiences ul li::after {
     content: "";

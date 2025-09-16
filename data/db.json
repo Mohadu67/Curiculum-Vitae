@@ -1,0 +1,79 @@
+{
+  "softSkills": [
+    { "title": "Travail en équipe", "desc": "Capacité à collaborer efficacement pour atteindre des objectifs communs." },
+    { "title": "Communication", "desc": "Transmettre clairement l'information et écouter activement." },
+    { "title": "Résolution de problèmes", "desc": "Identifier les défis et trouver des solutions créatives et efficaces." },
+    { "title": "Adaptabilité", "desc": "S'ajuster rapidement aux changements et apprendre de nouvelles compétences." },
+    { "title": "Gestion du temps", "desc": "Organiser et prioriser pour respecter les délais." },
+    { "title": "Leadership", "desc": "Motiver et guider une équipe vers la réussite collective." }
+  ],
+  "experiences": [
+    {
+      "title": "Manager",
+      "location": "KFC | Homme de Fer, Strasbourg",
+      "period": "Septembre 2018 à Août 2021",
+      "description": "Gestion de service, proximité terrain, respect des standards et des normes d’hygiène, optimisation de la productivité et préparation du terrain pour assurer la continuité d’exploitation."
+    },
+    {
+      "title": "RGM",
+      "location": "Pizza Hut | Sengewald, Strasbourg",
+      "period": "Septembre 2021 à Février 2023",
+      "description": "Pilotage approvisionnement, opérations marketing, contrôle des coûts, analyse des tableaux de bord, formation des équipes et amélioration continue des résultats opérationnels."
+    },
+    {
+      "title": "RGM",
+      "location": "KFC | Porte de l'Hôpital, Strasbourg",
+      "period": "Mars 2023 à Décembre 2023",
+      "description": "Ouverture de restaurant, formation des équipiers et managers, gestion des stocks/coûts, supervision des pôles, et actions marketing pour accroître le chiffre d’affaires."
+    },
+    {
+      "title": "Développeur Web Junior",
+      "location": "MobiStras",
+      "period": "Mars 2025 à Septembre 2025",
+      "description": "Développement et maintenance d’un site vitrine. Pages responsives, fonctionnalités JS simples, formulaires reliés à MySQL, GitHub pour le suivi, correctifs et améliorations UX."
+    }
+  ],
+  "formations": [
+    {
+      "title": "CDA — Concepteur Développeur d'Applications",
+      "org": "Niveau 6 (Bachelor) | Formation en cours",
+      "period": "En cours — Septembre 2025 à Juillet 2026",
+      "detail": "Architecture logicielle, POO, tests, développement front/back complet, patterns et gestion de projet avancée."
+    },
+    {
+      "title": "Développeur Web et Web Mobile",
+      "org": "CCI Campus | Formation Certifiante RNCP Niveau 5 (Bac +2)",
+      "period": "Acquis — Septembre 2024 à Mars 2025",
+      "detail": "HTML, CSS, JavaScript, PHP, SQL, bases de React, sites responsives, intégration d’APIs, Git, accessibilité, SEO."
+    },
+    {
+      "title": "Gestion de restaurant",
+      "org": "Groupe AmRest — Pizza Hut France",
+      "period": "Septembre 2021 à Décembre 2021",
+      "detail": "Management d’équipe, gestion des stocks et coûts, satisfaction client et optimisation des opérations."
+    },
+    {
+      "title": "Gestion de service",
+      "org": "KFC France — Qalysta",
+      "period": "2020",
+      "detail": "Coordination de service, respect qualité/hygiène, optimisation des flux et leadership opérationnel."
+    }
+  ],
+  "logos": [
+    { "src": "Assets/img/HTML5_logo_and_wordmark.svg.png", "alt": "HTML5", "desc": "Langage de balisage standard pour le web." },
+    { "src": "Assets/img/css.png", "alt": "CSS", "desc": "Styles modernes, responsive et animations." },
+    { "src": "Assets/img/js.png", "alt": "JavaScript", "desc": "Langage de programmation côté client." },
+    { "src": "Assets/img/php.png", "alt": "PHP", "desc": "Back-end dynamique et APIs." },
+    { "src": "Assets/img/react.png", "alt": "React", "desc": "Bibliothèque UI pour composants réactifs." },
+    { "src": "Assets/img/vite.png", "alt": "Vite", "desc": "Outil de build rapide pour le web." },
+    { "src": "Assets/img/git.png", "alt": "Git", "desc": "Contrôle de version distribué." },
+    { "src": "Assets/img/gitlab.png", "alt": "GitLab", "desc": "Plateforme DevOps et CI/CD." },
+    { "src": "Assets/img/mariadb.png", "alt": "MariaDB", "desc": "Base de données relationnelle." },
+    { "src": "Assets/img/linux.png", "alt": "Linux", "desc": "Système d’exploitation open-source." },
+    { "src": "Assets/img/adobe.webp", "alt": "Suite Adobe", "desc": "Outils de design et créa (PS/AI/Xd)." },
+    { "src": "Assets/img/figma.svg", "alt": "Figma", "desc": "Design collaboratif et prototypage." },
+    { "src": "Assets/img/trello.png", "alt": "Trello", "desc": "Gestion de projet visuelle." },
+    { "src": "Assets/img/slack.png", "alt": "Slack", "desc": "Communication d’équipe." }
+  ]
+}
+
