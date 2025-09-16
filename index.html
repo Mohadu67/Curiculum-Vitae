@@ -14,7 +14,7 @@
 
         <header id="accueil">
 
-            <div class="menu">
+            <div class="menu" role="navigation" aria-label="Navigation principale">
                 <div class="progress-bar"></div>
                 <ul>
                     <li><a href="#accueil">
@@ -23,8 +23,8 @@
                           </svg>
                     </a></li>
                     <li><a href="#softskil">Soft Skills</a></li>
-                    <li><a href="#hardskil">Hard Skills</a></li>
                     <li><a href="#experience">Experiences</a></li>
+                    <li><a href="#formations">Formations</a></li>
                 </ul>
             </div>
                 
@@ -43,14 +43,26 @@
                     <button class="learn-more">
                         En Savoir Plus <strong>></strong>
                     </button>
+       
                 </div>
 
+                <div class="actions">
+                    
+                    <a class="actionbtn" href="Assets/img/cv-mohammed.pdf" target="_blank" rel="noopener" download>
+                        Télécharger CV <strong>></strong>
+                    </a>
+                    
+                    <a class="actionbtn" href="https://calendly.com/hamiani-mohammed/30min" target="_blank" rel="noopener">
+                        Prenez contact <strong>></strong>
+                    </a>
+                    
+                </div>
             </div>
             
             
         </header>
 
-        <section>
+        <!-- <section>
             <div class="floating-icons">
                 <a class="telephone" href="tel:+330783330694" aria-label="Téléphone">
                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
@@ -75,9 +87,10 @@
                 </a>
       
               </div>
-        </section>
+        </section> -->
+
         
-        <section class="compétences">
+        <section class=" section compétences">
             
                 <h3>Mes <strong>Projets</strong></h3>
             <div class="carousel-container">
@@ -100,66 +113,94 @@
                 
                     <button class="carousel-prev">←</button>
                     <button class="carousel-next">→</button>
-            </div>
-        </section>
-
-        <section id="softskil">
-            
-            <h3>Mes <strong>Soft Skills</strong></h3>
-
-            <div class="competences-web">
-
-
-                <div class="skills">
-                    
-                    <div class="contenu">
-                        <li>
-                            <p>Résolution problèmes</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="70"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <p>Communication</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="90"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <p>Collaboration</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="75"></div>
-                            </div>
-                        </li>
-                    </div>
-
-                    <div class="contenu">
-                        <li>
-                            <p>Gestion du temps</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="90"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <p>Autonomie</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="90"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <p>Adaptabilité</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="90"></div>
-                            </div>
-                        </li>
-                    </div>
-                    
                 </div>
             </div>
         </section>
 
-        <section>
+        <div class="logo-modal" id="logoModal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="logo-modal__overlay" data-close-modal></div>
+            <div class="logo-card" aria-live="polite">
+                <button class="logo-card__close" type="button" aria-label="Fermer" data-close-modal>×</button>
+                <div class="logo-card__inner" id="logoCardInner">
+                    <div class="logo-card__face logo-card__front" id="logoCardFront"></div>
+                    <div class="logo-card__face logo-card__back" id="logoCardBack"></div>
+                </div>
+            </div>
+        </div>
 
+        <section class=" section logo-carousel" aria-label="Galerie de logos">
+            <h3>Mes <strong>technologie</strong></h3>
+            <div class="marquee">
+
+                <div class="marquee__track">
+
+                    <div class="logo-item"><img src="Assets/img/HTML5_logo_and_wordmark.svg.png" alt="HTML5"></div>
+                    <div class="logo-item"><img src="Assets/img/css.png" alt="CSS"></div>
+                    <div class="logo-item"><img src="Assets/img/js.png" alt="JavaScript"></div>
+                    <div class="logo-item"><img src="Assets/img/php.png" alt="PHP"></div>
+                    <div class="logo-item"><img src="Assets/img/react.png" alt="React"></div>
+                    <div class="logo-item"><img src="Assets/img/vite.png" alt="Vite"></div>
+                    <div class="logo-item"><img src="Assets/img/git.png" alt="Git"></div>
+                    <div class="logo-item"><img src="Assets/img/gitlab.png" alt="GitLab"></div>
+                    <div class="logo-item"><img src="Assets/img/mariadb.png" alt="MariaDB"></div>
+                    <div class="logo-item"><img src="Assets/img/linux.png" alt="Linux"></div>
+                    <div class="logo-item"><img src="Assets/img/adobe.webp" alt="SuiteAdobe"></div>
+                    <div class="logo-item"><img src="Assets/img/figma.svg" alt="Figma"></div>
+                    <div class="logo-item"><img src="Assets/img/trello.png" alt="Trello"></div>
+                    <div class="logo-item"><img src="Assets/img/slack.png" alt="Slack"></div>
+
+
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/HTML5_logo_and_wordmark.svg.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/css.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/js.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/php.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/react.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/vite.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/git.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/gitlab.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/mariadb.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/linux.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/adobe.webp" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/figma.svg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/trello.png" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="Assets/img/slack.png" alt=""></div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section softskil" id="softskil">
+            <h3>Mes <strong>Soft Skills</strong></h3>
+            <div class="skills-container">
+                <div class="skill">
+                    <h4>Travail en équipe</h4>
+                    <p>Capacité à collaborer efficacement avec les collègues pour atteindre des objectifs communs.</p>
+                </div>
+                <div class="skill">
+                    <h4>Communication</h4>
+                    <p>Compétence à transmettre des informations clairement et à écouter activement les autres.</p>
+                </div>
+                <div class="skill">
+                    <h4>Résolution de problèmes</h4>
+                    <p>Aptitude à identifier les défis et à trouver des solutions créatives et efficaces.</p>
+                </div>
+                <div class="skill">
+                    <h4>Adaptabilité</h4>
+                    <p>Capacité à s'ajuster rapidement aux changements et à apprendre de nouvelles compétences.</p>
+                </div>
+                <div class="skill">
+                    <h4>Gestion du temps</h4>
+                    <p>Compétence à organiser et prioriser les tâches pour respecter les délais.</p>
+                </div>
+                <div class="skill">
+                    <h4>Leadership</h4>
+                    <p>Aptitude à motiver et guider une équipe vers la réussite collective.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class=" section jeu">
             <div>
 
                 <h2>Encore en train de lire ? Grimpez plutôt les échelons !</h2>
@@ -175,163 +216,116 @@
                 </div>
                 
             </div>
+        </section>
+        
+        <section class=" section experiences" id="experience">
 
-            <h3>Mes <strong>Hard Skills</strong></h3>
-            <div class="competences-web">
+            <h3>Mes <strong>Expériences Professionnelles</strong></h3>
+            <div class="experiences">
+                <ul id="experience">
+                    <li>
+                        <div>
+                            <h4>Manager</h4>
+                            <p>KFC | Homme de Fer, Strasbourg</p>
+                            <p>Septembre 2018 à Août 2021</p>
+                        </div>
+                        <div class="description">
+                            <p>En tant que manager, j’ai assuré la gestion de mon service en veillant à maintenir une proximité avec mes équipiers, en travaillant directement avec eux sur le terrain. Mon rôle consistait à garantir le respect des standards de la marque ainsi que des normes d’hygiène, tout en optimisant la productivité de l’équipe. J’ai également veillé à ce que le terrain soit impeccablement préparé pour le prochain manager, assurant ainsi une continuité fluide dans les opérations quotidiennes.</p>                    </div>
+                    </li>
+                    <li>
+                        <div>    
+                            <h4>RGM</h4>
+                            <p>Pizza Hut | Sengewald, Strasbourg</p>
+                            <p>Septembre 2021 à Février 2023</p>
+                        </div>
+                        <div class="description">
+                            <p>En tant que RGM chez Pizza Hut, j’ai géré l’approvisionnement, les opérations marketing et le contrôle des coûts dans le cadre d’une optimisation continue du restaurant. J’ai assuré l’analyse des tableaux de bord financiers, encadré la formation des équipiers et managers, et mis en œuvre des plans d’action pour améliorer les résultats opérationnels. Mon rôle comprenait également l’optimisation des ressources, la gestion efficace des livraisons, et le renforcement de la satisfaction client, garantissant ainsi un service de qualité, tant en restaurant qu’en livraison.</p>                    </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h4>RGM</h4>
+                            <p>KFC | Porte de l'Hôpital, Strasbourg</p>
+                            <p>Mars 2023 à Décembre 2023</p>
+                        </div>
+                        <div class="description">
+                            <p>En tant que RGM chez KFC, j’ai participé à l’ouverture du restaurant, en formant à la fois les équipiers et les managers pour garantir une équipe performante dès le départ. J’ai mis en place une gestion rigoureuse des stocks et des coûts afin d’optimiser les ressources et la rentabilité. J’ai également réparti les différents pôles de responsabilités entre mes managers et supervisé leurs opérations pour m’assurer du bon fonctionnement de chaque secteur. En collaboration avec le service marketing, nous avons élaboré des stratégies visant à accroître le chiffre d'affaires, en proposant des actions promotionnelles efficaces et adaptées aux besoins du marché.</p>                    </div>
+                    </li>
 
+                    <li>
+                        <div>
+                            <h4>Développeur Web Junior</h4>
+                            <p>MobiStras</p>
+                            <p>Mars 2025 a Septembre 2025</p>
+                        </div>
+                        <div class="description">
+                            <p>Participation au développement et à la maintenance d’un site vitrine de l’entreprise. Réalisation de pages responsives en HTML/CSS, ajout de fonctionnalités simples en JavaScript, intégration de formulaires reliés à une base MySQL, et utilisation de GitHub pour le suivi du projet. Collaboration avec l’équipe pour corriger des bugs, améliorer l’expérience utilisateur et documenter les fonctionnalités</p>                    </div>
+                    </li>
 
-                <div id="hardskil" class="skills">
-                    
-                    <div class="contenu">
-                        <li>
-                            <p>HTML</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="80"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <p>CSS</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="70"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <p>JavaScript</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="60"></div>
-                            </div>
-                        </li>
-                    </div>
-
-                    <div class="contenu">
-                        <li>
-                            <p>PHP</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="60"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <p>MySQL</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="80"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <p>GIT</p>
-                            <div class="skill-container">
-                                <div class="skill-bar" data-value="70"></div>
-                            </div>
-                        </li>
-                    </div>
-                    
-                </div>
+                </ul>
             </div>
+        </section>
 
-
-    </section>
-    
-    <section id="formation">
-
-        <div class="formations">
+        <section class=" section formations" id="formations">
             <h3>Mes <strong>Formations</strong></h3>
-            <h5>Appuyer sur la fiche pour en savoir plus</h5>
-            <ul>
-                <li>
-                    <h4>Gestion de service</h4>
-                    <p>KFC | Homme de fer, Strasbourg</p>
-                    <p>Septembre 2019 à Février 2020</p>
-                    <p id="detail-kfc" class="detail hidden">
-                        <strong>Introduction :</strong><br>
-                        Au sein de l’établissement KFC à Strasbourg, j’ai eu l’opportunité d’exercer le rôle de responsable de service, un poste clé dans la gestion quotidienne d’un restaurant rapide. Cette expérience m’a permis de développer des compétences en gestion d’équipe, en service client et en optimisation des opérations dans un environnement dynamique et exigeant. J’ai également appris à m’adapter aux défis liés à la pression constante tout en maintenant des standards élevés de qualité.<br>
-                        <strong>Acquis :</strong>
-                        <ul>
-                            <li>Gestion d’équipe.</li>
-                            <li>Formation equipier.</li>
-                            <li>Service client.</li>
-                            <li>Optimisation opérations.</li>
-                            <li>Respect des normes.</li>
-                            <li>Leadership.</li>
-                        </ul><br>
-                        Cette formation m’a permis de maîtriser les aspects fondamentaux de la gestion d’un service dans un environnement de restauration rapide. J’ai appris à jongler entre la satisfaction client, la gestion d’équipe et la rentabilité opérationnelle.
-                    </p>
-                </li>
-                
-                <li>
-                    <h4>Gestion de restaurant</h4>
-                    <p>Pizza Hut | Sengewald, Strasbourg</p>
-                    <p>Septembre 2021 à Décembre 2021</p>
-                    <p id="detail-pizzahut" class="detail hidden">
-                        <strong>Introduction :</strong><br>
-                        En tant que responsable dans un restaurant Pizza Hut à Strasbourg, j’ai approfondi mes compétences en gestion d’un établissement de restauration à grande échelle. Mon rôle consistait à superviser les équipes de salle et de cuisine, à gérer la relation client, et à veiller au respect des normes de qualité et de sécurité.<br>
-                        <strong>Acquis :</strong>
-                        <ul>
-                            <li>Supervision des équipes.</li>
-                            <li>Gestion des coût</li>
-                            <li>Gestion des stocks.</li>
-                            <li>Service client.</li>
-                        </ul><br>
-                        Cette expérience m’a permis de renforcer ma capacité à gérer une équipe dans un environnement rapide tout en respectant les normes et en optimisant la rentabilité.
-                    </p>
-                </li>
-                
-                <li>
-                    <h4>Développeur web et web mobile</h4>
-                    <p>CCI Campus | Avenue de Colmar, Strasbourg</p>
-                    <p>Septembre 2024 à Mars 2025</p>
-                    <p id="detail-devweb" class="detail hidden">
-                        <strong>Introduction :</strong><br>
-                        Au cours de cette formation, j’acquiers des compétences en développement web front-end, en me spécialisant dans la création de sites web réactifs et ergonomiques. 
-                        <br>
-                        <strong>Acquis :</strong>
-                        <ul>
-                            <li>HTML, CSS, JavaScript.</li>
-                            <li>PHP, MySQL, NoSQL</li>
-                            <li>Conception Graphique</li>
-                            <li>Gestion de projets.</li>
-                        </ul><br>
-                        L’organisation des projets repose sur la méthode Kanban, permettant une gestion fluide des tâches et des délais. En plus de l’implémentation technique, j’ai acquis des compétences en conception graphique, gestion de cookies, RGPD, et intégration d’API REST, assurant une expérience utilisateur fluide et sécurisée. Cette formation me prépare à piloter l’intégralité d’un projet web, du concept initial à la mise en ligne.
-                    </p>
-                </li>
-            </ul>
-        </div>
-    </section>
+            <div class="formations">
+                <div class="formation-backdrop" aria-hidden="true"></div>
+                <ul>
+                    <li>
+                        <div>
+                            <h4>CDA — Concepteur Développeur d'Applications</h4>
+                            <p>Niveau 6 (Bachelor) | Formation en cours</p>
+                            <p>En cours — Septembre 2025 à Juillet 2026</p>
+                        </div>
+                        <div class="detail hidden">
+                            <p>
+                                Maîtrise complète du cycle de développement d’applications web : de l’analyse des besoins à la mise en production. 
+                                Approfondissement de l’architecture logicielle, conception orientée objet et intégration front/back. 
+                                Mise en œuvre de maquettes (Figma, Miro), identité graphique (Adobe Suite), et développement mobile-first (HTML, CSS, JavaScript, React). 
+                                Utilisation d’API REST, gestion de la sécurité (cookies, RGPD), tests multi-plateformes et gestion de projet avec Trello. 
+                                L’accent est mis sur la qualité du code, la clarté des interfaces et la création d’outils pratiques et accessibles.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h4>Développeur Web et Web Mobile</h4>
+                            <p>CCI Campus | Formation Certifiante RNCP Niveau 5 (Bac +2)</p>
+                            <p>Acquis — Septembre 2024 à Mars 2025</p>
+                        </div>
+                        <div class="detail hidden">
+                            <p>
+                                Compétences en développement web front et back : HTML, CSS, JavaScript, PHP, SQL et initiation à React. 
+                                Réalisation de sites responsives mobile-first, intégration d’APIs et mise en place de fonctionnalités dynamiques. 
+                                Application des bonnes pratiques : gestion de version avec Git, optimisation de l’accessibilité et bases du SEO.
+                            </p>
+                        </div>
+                    </li>
 
 
-    <section>
+                    <li>
+                        <div>
+                            <h4>Gestion de restaurant</h4>
+                            <p>Groupe AmRest — Pizza Hut France</p>
+                            <p>Septembre 2021 à Décembre 2021</p>
+                        </div>
+                        <div class="detail hidden">
+                            <p>Management d’équipe, gestion des stocks et coûts, amélioration continue des opérations et de la satisfaction client dans un environnement à fort débit.</p>
+                        </div>
+                    </li>
 
-        <h3>Mes <strong>Expériences Professionnelles</strong></h3>
-        <div class="experiences">
-            <ul id="experience">
-                <li>
-                    <div>
-                        <h4>Manager</h4>
-                        <p>KFC | Homme de Fer, Strasbourg</p>
-                        <p>Septembre 2018 à Août 2021</p>
-                    </div>
-                    <div class="description">
-                        <p>En tant que manager, j’ai assuré la gestion de mon service en veillant à maintenir une proximité avec mes équipiers, en travaillant directement avec eux sur le terrain. Mon rôle consistait à garantir le respect des standards de la marque ainsi que des normes d’hygiène, tout en optimisant la productivité de l’équipe. J’ai également veillé à ce que le terrain soit impeccablement préparé pour le prochain manager, assurant ainsi une continuité fluide dans les opérations quotidiennes.</p>                    </div>
-                </li>
-                <li>
-                    <div>    
-                        <h4>RGM</h4>
-                        <p>Pizza Hut | Sengewald, Strasbourg</p>
-                        <p>Septembre 2021 à Février 2023</p>
-                    </div>
-                    <div class="description">
-                        <p>En tant que directeur chez Pizza Hut, j’ai géré l’approvisionnement, les opérations marketing et le contrôle des coûts dans le cadre d’une optimisation continue du restaurant. J’ai assuré l’analyse des tableaux de bord financiers, encadré la formation des équipiers et managers, et mis en œuvre des plans d’action pour améliorer les résultats opérationnels. Mon rôle comprenait également l’optimisation des ressources, la gestion efficace des livraisons, et le renforcement de la satisfaction client, garantissant ainsi un service de qualité, tant en restaurant qu’en livraison.</p>                    </div>
-                </li>
-                <li>
-                    <div>
-                        <h4>Directeur</h4>
-                        <p>KFC | Porte de l'Hôpital, Strasbourg</p>
-                        <p>Mars 2023 à Décembre 2023</p>
-                    </div>
-                    <div class="description">
-                        <p>En tant que directeur chez KFC, j’ai participé à l’ouverture du restaurant, en formant à la fois les équipiers et les managers pour garantir une équipe performante dès le départ. J’ai mis en place une gestion rigoureuse des stocks et des coûts afin d’optimiser les ressources et la rentabilité. J’ai également réparti les différents pôles de responsabilités entre mes managers et supervisé leurs opérations pour m’assurer du bon fonctionnement de chaque secteur. En collaboration avec le service marketing, nous avons élaboré des stratégies visant à accroître le chiffre d'affaires, en proposant des actions promotionnelles efficaces et adaptées aux besoins du marché.</p>                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
+                    <li>
+                        <div>
+                            <h4>Gestion de service</h4>
+                            <p>KFC France — Qalysta</p>
+                            <p>2020</p>
+                        </div>
+                        <div class="detail hidden">
+                            <p>Coordination de service, respect des standards qualité/hygiène et optimisation des flux, avec un accent sur le leadership opérationnel.</p>
+                        </div>
+                    </li>
+                </ul>
+
+        </section>
 
     <footer class="footer">
         <div class="contact-icons">
@@ -346,12 +340,12 @@
                     <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648m-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
                 </svg>
             </a>
-            <a class="github" href="https://github.com/Mohadu67/" target="_blank" aria-label="GitHub">
+            <a class="github" href="https://github.com/Mohadu67/" target="_blank" rel="noopener noreferrer nofollow" rel="" aria-label="GitHub">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
                     <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
                 </svg>
             </a>
-            <a class="linkedin" href="https://www.linkedin.com/in/mohammed-hamiani-461561243/" target="_blank" aria-label="LinkedIn">
+            <a class="linkedin" href="https://www.linkedin.com/in/mohammed-hamiani-461561243/" target="_blank" rel="noopener noreferrer nofollow" aria-label="LinkedIn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
                     <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
                 </svg>
@@ -361,124 +355,9 @@
       </footer>
 
 
-
-
-
       <div class="svg-container">
-        <svg width="100%" height="100%" viewBox="0 0 3424 8875" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-<g class="animate-group-3" opacity="0.2" filter="url(#filter0_f_1_17)">
-<path d="M2833.14 7248.89C2988.71 7428.33 2872.95 7783.49 2574.59 8042.16C2276.23 8300.84 1908.25 8365.08 1752.68 8185.65C1597.11 8006.21 1712.87 7651.05 2011.23 7392.38C2309.59 7133.7 2677.57 7069.46 2833.14 7248.89Z" fill="url(#paint0_radial_1_17)"/>
-</g>
-<g class="animate-group-2" opacity="0.15" filter="url(#filter1_f_1_17)">
-<path d="M2078.27 6589.94C2053.15 6883.1 1713.83 7093.42 1320.39 7059.7C926.949 7025.98 628.37 6760.99 653.497 6467.82C678.624 6174.66 1017.94 5964.34 1411.38 5998.06C1804.82 6031.78 2103.4 6296.78 2078.27 6589.94Z" fill="url(#paint1_radial_1_17)"/>
-</g>
-<g class="animate-group-1" opacity="0.2" filter="url(#filter2_f_1_17)">
-<path d="M1044 5265C1044 5546.11 864.242 5774 642.5 5774C420.759 5774 241 5546.11 241 5265C241 4983.89 420.759 4756 642.5 4756C864.242 4756 1044 4983.89 1044 5265Z" fill="url(#paint2_radial_1_17)"/>
-</g>
-<g class="animate-group-3" opacity="0.2" filter="url(#filter3_f_1_17)">
-<path d="M3142 5030.89C3297.57 5210.33 3181.81 5565.49 2883.45 5824.16C2585.09 6082.84 2217.11 6147.08 2061.54 5967.65C1905.97 5788.21 2021.73 5433.05 2320.09 5174.38C2618.45 4915.7 2986.43 4851.46 3142 5030.89Z" fill="url(#paint3_radial_1_17)"/>
-</g>
-<g class="animate-group-2" opacity="0.15" filter="url(#filter4_f_1_17)">
-<path d="M2371.27 4023.94C2346.15 4317.1 2006.83 4527.42 1613.39 4493.7C1219.95 4459.98 921.37 4194.99 946.497 3901.82C971.624 3608.66 1310.94 3398.34 1704.38 3432.06C2097.82 3465.78 2396.4 3730.78 2371.27 4023.94Z" fill="url(#paint4_radial_1_17)"/>
-</g>
-<g class="animate-group-1" opacity="0.2" filter="url(#filter5_f_1_17)">
-<path d="M1377.14 2318.89C1532.71 2498.33 1416.95 2853.49 1118.59 3112.16C820.232 3370.84 452.248 3435.08 296.681 3255.65C141.113 3076.21 256.871 2721.05 555.23 2462.38C853.59 2203.7 1221.57 2139.46 1377.14 2318.89Z" fill="url(#paint5_radial_1_17)"/>
-</g>
-<g class="animate-group-3"opacity="0.2" filter="url(#filter6_f_1_17)">
-<path d="M2946 1963C2946 2244.11 2766.24 2472 2544.5 2472C2322.76 2472 2143 2244.11 2143 1963C2143 1681.89 2322.76 1454 2544.5 1454C2766.24 1454 2946 1681.89 2946 1963Z" fill="url(#paint6_radial_1_17)"/>
-</g>
-<g class="animate-group-2" opacity="0.2" filter="url(#filter7_f_1_17)">
-<path d="M2892 465C2892 672.106 2615.98 840 2275.5 840C1935.02 840 1659 672.106 1659 465C1659 257.894 1935.02 90 2275.5 90C2615.98 90 2892 257.894 2892 465Z" fill="url(#paint7_radial_1_17)"/>
-</g>
-<g class="animate-group-2" opacity="0.2" filter="url(#filter8_f_1_17)">
-<path d="M1492.24 1424.19C1432.27 1653.97 1073.91 1759.41 691.825 1659.69C309.742 1559.97 48.6178 1292.85 108.591 1063.06C168.564 833.278 526.924 727.842 909.007 827.564C1291.09 927.286 1552.21 1194.41 1492.24 1424.19Z" fill="url(#paint8_radial_1_17)"/>
-</g>
-<defs>
-<filter id="filter0_f_1_17" x="1593.53" y="7057.19" width="1398.76" height="1320.16" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="45" result="effect1_foregroundBlur_1_17"/>
-</filter>
-<filter id="filter1_f_1_17" x="562.02" y="5904.51" width="1607.73" height="1248.74" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="45" result="effect1_foregroundBlur_1_17"/>
-</filter>
-<filter id="filter2_f_1_17" x="151" y="4666" width="983" height="1198" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="45" result="effect1_foregroundBlur_1_17"/>
-</filter>
-<filter id="filter3_f_1_17" x="1902.39" y="4839.19" width="1398.76" height="1320.16" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="45" result="effect1_foregroundBlur_1_17"/>
-</filter>
-<filter id="filter4_f_1_17" x="855.02" y="3338.51" width="1607.73" height="1248.74" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="45" result="effect1_foregroundBlur_1_17"/>
-</filter>
-<filter id="filter5_f_1_17" x="137.53" y="2127.19" width="1398.76" height="1320.16" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="45" result="effect1_foregroundBlur_1_17"/>
-</filter>
-<filter id="filter6_f_1_17" x="2053" y="1364" width="983" height="1198" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="45" result="effect1_foregroundBlur_1_17"/>
-</filter>
-<filter id="filter7_f_1_17" x="1569" y="0" width="1413" height="930" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="45" result="effect1_foregroundBlur_1_17"/>
-</filter>
-<filter id="filter8_f_1_17" x="10.019" y="699.957" width="1580.79" height="1087.34" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="45" result="effect1_foregroundBlur_1_17"/>
-</filter>
-<radialGradient id="paint0_radial_1_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2292.91 7717.27) rotate(49.0749) scale(430 715)">
-<stop offset="0.38" stop-color="#1932B3"/>
-<stop offset="1" stop-color="#D6E0EF"/>
-</radialGradient>
-<radialGradient id="paint1_radial_1_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1365.88 6528.88) rotate(94.8989) scale(532.768 715)">
-<stop offset="0.215" stop-color="#1932B3"/>
-<stop offset="0.93" stop-color="#90BDFF"/>
-</radialGradient>
-<radialGradient id="paint2_radial_1_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(642.5 5265) rotate(90) scale(509 401.5)">
-<stop offset="0.215" stop-color="#1932B3"/>
-<stop offset="0.93" stop-color="#90BDFF"/>
-</radialGradient>
-<radialGradient id="paint3_radial_1_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2158.91 5499.27) rotate(49.0749) scale(430 715)">
-<stop offset="0.215" stop-color="#1932B3"/>
-<stop offset="0.93" stop-color="#90BDFF"/>
-</radialGradient>
-<radialGradient id="paint4_radial_1_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1658.88 3962.88) rotate(94.8989) scale(532.768 715)">
-<stop offset="0.215" stop-color="#1932B3"/>
-<stop offset="0.93" stop-color="#90BDFF"/>
-</radialGradient>
-<radialGradient id="paint5_radial_1_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(836.911 2787.27) rotate(49.0749) scale(430 715)">
-<stop offset="0.38" stop-color="#1932B3"/>
-<stop offset="1" stop-color="#D6E0EF"/>
-</radialGradient>
-<radialGradient id="paint6_radial_1_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2544.5 1963) rotate(90) scale(509 401.5)">
-<stop offset="0.215" stop-color="#1932B3"/>
-<stop offset="0.93" stop-color="#90BDFF"/>
-</radialGradient>
-<radialGradient id="paint7_radial_1_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2275.5 465) rotate(90) scale(375 616.5)">
-<stop offset="0.215" stop-color="#1932B3"/>
-<stop offset="0.93" stop-color="#90BDFF"/>
-</radialGradient>
-<radialGradient id="paint8_radial_1_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800.416 1243.63) rotate(104.628) scale(430 715)">
-<stop offset="0.215" stop-color="#1932B3"/>
-<stop offset="0.93" stop-color="#90BDFF"/>
-</radialGradient>
-</defs>
-        </svg>
-    </div>
+        <img src="Assets/img/vanishing-stripes.svg" alt="" aria-hidden="true" />
+      </div>
         
     </body>
 

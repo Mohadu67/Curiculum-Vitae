@@ -37,13 +37,9 @@ window.addEventListener('scroll', function() {
 });
 
 
-
-
-
-
-
 const navLinks = document.querySelectorAll(".menu a");
-
+const menuEl = document.querySelector('.menu');
+const navToggle = document.querySelector('.nav-toggle');
 
 navLinks.forEach(link => {
     link.addEventListener("click", (e) => {
@@ -52,10 +48,112 @@ navLinks.forEach(link => {
         const targetId = link.getAttribute("href").substring(1);
         const targetSection = document.getElementById(targetId);
 
-        targetSection.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
+        if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        // close mobile nav after click
+        if (menuEl && menuEl.classList.contains('open')) {
+            menuEl.classList.remove('open');
+            navToggle && navToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+});
+
+// Mobile nav toggle
+navToggle && navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!expanded));
+    menuEl && menuEl.classList.toggle('open');
+});
+
+// Active link on scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = ['accueil','softskil','hardskil','experience']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+    if (!sections.length) return;
+
+    const linkMap = new Map();
+    navLinks.forEach(a => {
+        const id = a.getAttribute('href').substring(1);
+        linkMap.set(id, a);
+    });
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const id = entry.target.id;
+            const link = linkMap.get(id);
+            if (!link) return;
+            if (entry.isIntersecting) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            }
         });
+    }, { threshold: 0.6 });
+
+    sections.forEach(sec => io.observe(sec));
+});
+
+// Logo modal flip interactions
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.logo-carousel .marquee__track');
+    const modal = document.getElementById('logoModal');
+    const inner = document.getElementById('logoCardInner');
+    const front = document.getElementById('logoCardFront');
+    const back = document.getElementById('logoCardBack');
+    const closeEls = modal ? modal.querySelectorAll('[data-close-modal]') : [];
+
+    if (!modal) return;
+
+    const openModal = (title, imgSrc, desc) => {
+        modal.setAttribute('aria-hidden', 'false');
+        // fill front
+        front.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = imgSrc; img.alt = title || '';
+        front.appendChild(img);
+        // fill back
+        back.innerHTML = '';
+        const h4 = document.createElement('h4'); h4.textContent = title || 'Technologie';
+        const p = document.createElement('p'); p.textContent = desc || "Description à venir.";
+        back.appendChild(h4); back.appendChild(p);
+        inner.classList.remove('flipped');
+        track && track.classList.add('paused');
+    };
+
+    const closeModal = () => {
+        modal.setAttribute('aria-hidden', 'true');
+        inner.classList.remove('flipped');
+        track && track.classList.remove('paused');
+    };
+
+    document.querySelectorAll('.logo-carousel .logo-item').forEach(item => {
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('role', 'button');
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            const title = (img && img.alt) || item.getAttribute('data-title') || 'Technologie';
+            const desc = item.getAttribute('data-desc') || img?.getAttribute('data-desc') || `Découvrir ${title}.`;
+            const src = img ? img.src : '';
+            openModal(title, src, desc);
+        });
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') {
+                e.preventDefault();
+                item.click();
+            }
+        });
+    });
+
+    // Flip on click inside card
+    inner && inner.addEventListener('click', () => {
+        inner.classList.toggle('flipped');
+    });
+
+    closeEls.forEach(el => el.addEventListener('click', closeModal));
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
     });
 });
 
@@ -71,33 +169,37 @@ const carousel = document.querySelector('.carousel');
 const carouselItems = document.querySelectorAll('.carousel-item');
 const prevButton = document.querySelector('.carousel-prev');
 const nextButton = document.querySelector('.carousel-next');
+let carouselIndex = 0;
 
 
 let currentIndex = 0;
 
 
 function updateCarousel() {
-    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    if (!carousel) return;
+    carousel.style.transform = `translateX(-${carouselIndex * 100}%)`;
 }
 
 function nextSlide() {
-    currentIndex = (currentIndex + 1) % carouselItems.length;
+    if (!carouselItems.length) return;
+    carouselIndex = (carouselIndex + 1) % carouselItems.length;
     updateCarousel();
 }
 
 
 function prevSlide() {
-    currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length; 
+    if (!carouselItems.length) return;
+    carouselIndex = (carouselIndex - 1 + carouselItems.length) % carouselItems.length; 
     updateCarousel();
 }
 
 
-nextButton.addEventListener('click', () => {
+nextButton && nextButton.addEventListener('click', () => {
     nextSlide();
     resetAutoSlide();
 });
 
-prevButton.addEventListener('click', () => {
+prevButton && prevButton.addEventListener('click', () => {
     prevSlide();
     resetAutoSlide();  
 });
@@ -312,28 +414,48 @@ const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
 const jumpButton = document.getElementById("jumpButton");
 
+function bindControl(el, onDown, onUp) {
+    if (!el) return;
+    // Pointer events (unified mouse/touch)
+    el.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        el.classList.add('is-pressed');
+        onDown && onDown();
+    }, { passive: false });
+    el.addEventListener('pointerup', () => {
+        el.classList.remove('is-pressed');
+        onUp && onUp();
+    });
+    el.addEventListener('pointercancel', () => {
+        el.classList.remove('is-pressed');
+        onUp && onUp();
+    });
+    el.addEventListener('pointerleave', () => {
+        el.classList.remove('is-pressed');
+        onUp && onUp();
+    });
 
-leftArrow.addEventListener("touchstart", () => {
-    keys.left = true;
-    keys.right = false;
-});
-rightArrow.addEventListener("touchstart", () => {
-    keys.right = true;
-    keys.left = false;
-});
-jumpButton.addEventListener("touchstart", () => {
+    // Fallback touch (older browsers)
+    el.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        el.classList.add('is-pressed');
+        onDown && onDown();
+    }, { passive: false });
+    el.addEventListener('touchend', () => {
+        el.classList.remove('is-pressed');
+        onUp && onUp();
+    });
+}
+
+bindControl(leftArrow, () => { keys.left = true; keys.right = false; }, () => { keys.left = false; });
+bindControl(rightArrow, () => { keys.right = true; keys.left = false; }, () => { keys.right = false; });
+bindControl(jumpButton, () => { keys.jump = true; }, () => { keys.jump = false; });
+
+// Single tap/click to jump
+jumpButton && jumpButton.addEventListener('click', (e) => {
+    e.preventDefault();
     keys.jump = true;
-});
-
-
-leftArrow.addEventListener("touchend", () => {
-    keys.left = false;
-});
-rightArrow.addEventListener("touchend", () => {
-    keys.right = false;
-});
-jumpButton.addEventListener("touchend", () => {
-    keys.jump = false;
+    setTimeout(() => { keys.jump = false; }, 120);
 });
 
 
@@ -384,17 +506,96 @@ document.addEventListener("DOMContentLoaded", function () {
 //<----------------------------------------------contenu formation--------------------------------------->
 
 document.addEventListener("DOMContentLoaded", function () {
-    const formations = document.querySelectorAll('.formations ul li');
+    const items = document.querySelectorAll('.formations ul li');
+    const backdrop = document.querySelector('.formation-backdrop');
+    if (!items.length) return;
 
-    formations.forEach(formation => {
-        formation.addEventListener('click', function () {
+    const showBackdrop = () => {
+        if (backdrop) {
+            // Backdrop is visually disabled; keep ARIA in sync without changing scroll
+            backdrop.classList.add('show');
+            backdrop.setAttribute('aria-hidden', 'false');
+        }
+    };
+    const hideBackdrop = () => {
+        if (backdrop) {
+            backdrop.classList.remove('show');
+            backdrop.setAttribute('aria-hidden', 'true');
+        }
+    };
 
-            formations.forEach(item => {
-                item.classList.remove('active');
-            });
-
-            formation.classList.toggle('active');
+    const closeAll = () => {
+        items.forEach(li => {
+            li.classList.remove('active');
+            li.setAttribute('aria-expanded', 'false');
+            const d = li.querySelector('.detail');
+            if (d) d.setAttribute('aria-hidden', 'true');
         });
+    };
+
+    items.forEach((item, idx) => {
+        // Make focusable and announce state
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+
+        const detail = item.querySelector('.detail');
+        if (detail) {
+            if (!detail.id) detail.id = `formation-detail-${idx}`;
+            item.setAttribute('aria-controls', detail.id);
+            item.setAttribute('aria-expanded', 'false');
+            detail.setAttribute('aria-hidden', 'true');
+        }
+
+        const toggle = () => {
+            const isActive = item.classList.contains('active');
+            // close all
+            closeAll();
+            if (!isActive) {
+                item.classList.add('active');
+                item.setAttribute('aria-expanded', 'true');
+                if (detail) detail.setAttribute('aria-hidden', 'false');
+                item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                showBackdrop();
+            } else {
+                hideBackdrop();
+            }
+        };
+
+        item.addEventListener('click', toggle);
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') {
+                e.preventDefault();
+                toggle();
+            }
+        });
+    });
+
+    // Backdrop interactions
+    backdrop && backdrop.addEventListener('click', () => {
+        closeAll();
+        hideBackdrop();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeAll();
+            hideBackdrop();
+        }
+    });
+
+    // Reveal on scroll animation
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    items.forEach(item => {
+        item.classList.add('reveal-up');
+        revealObserver.observe(item);
     });
 });
 
@@ -422,25 +623,20 @@ experiences.forEach((experience) => {
 
 
 
-let currrentIndex = 0;
+let iconIndex = 0;
 
 
 const icons = document.querySelectorAll('.floating-icons a');
 
 function animateIcon() {
-    
+    if (!icons.length) return;
     icons.forEach(icon => icon.classList.remove('animated'));
-
-   
-    icons[currentIndex].classList.add('animated');
-
-    
-    currentIndex = (currentIndex + 1) % icons.length; 
-
-
+    icons[iconIndex].classList.add('animated');
+    const thisIndex = iconIndex;
     setTimeout(() => {
-        icons[currentIndex].classList.remove('animated');
-    }, 1000); 
+        if (icons[thisIndex]) icons[thisIndex].classList.remove('animated');
+    }, 1000);
+    iconIndex = (iconIndex + 1) % icons.length; 
 }
 
 
@@ -452,88 +648,76 @@ animateIcon();
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const clickableLis = [
+        ...document.querySelectorAll('.formations ul li'),
+        ...document.querySelectorAll('.experiences ul li')
+    ];
+    if (!clickableLis.length) return;
 
+    // 1) One-time hint bounce when first in view
+    const hinted = new WeakSet();
+    const hintObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            if (hinted.has(el)) return;
+            hinted.add(el);
+            el.classList.add('hint-bounce');
+            setTimeout(() => el.classList.remove('hint-bounce'), 1400);
+            hintObserver.unobserve(el);
+        });
+    }, { threshold: 0.6 });
 
+    clickableLis.forEach(li => hintObserver.observe(li));
 
+    // 2) Repeating sheen every 5s while visible
+    const sheenIntervals = new WeakMap();
+    const runSheen = (el) => {
+        el.classList.add('sheen-run');
+        setTimeout(() => el.classList.remove('sheen-run'), 1100);
+    };
 
+    const sheenObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const el = entry.target;
+            if (entry.isIntersecting) {
+                // kick once immediately
+                runSheen(el);
+                if (!sheenIntervals.has(el)) {
+                    const id = setInterval(() => runSheen(el), 5000);
+                    sheenIntervals.set(el, id);
+                }
+            } else {
+                // stop when out of view
+                const id = sheenIntervals.get(el);
+                if (id) {
+                    clearInterval(id);
+                    sheenIntervals.delete(el);
+                }
+            }
+        });
+    }, { threshold: 0.4 });
 
+    clickableLis.forEach(li => sheenObserver.observe(li));
 
-// <----------------------------------------------API Json en phase d'intégration--------------------------------------->
+    // 3) Ripple on click for both sections
+    const createRipple = (e, target) => {
+        const rect = target.getBoundingClientRect();
+        const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+        const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+        const span = document.createElement('span');
+        span.className = 'ripple';
+        span.style.left = `${x}px`;
+        span.style.top = `${y}px`;
+        target.appendChild(span);
+        setTimeout(() => span.remove(), 700);
+    };
 
-// const contenueFormation = document.querySelector(".formations");
-// const contenueExperience = document.querySelector(".experiences");
-
-// fetch('data/db.json')
-// .then(function(response) {
-//     return response.json();
-// })
-// .then(function(data) {
-
-//     // *<---------------Articles page IMC------------------>*//
-
-//     let htmlIMC = "";
-//     if (contenueExperience) { 
-//         if (data.contenueExperience) {
-//             data.contenueExperience.forEach(function(contenueExperience) {
-//                 htmlIMC += `
-//                 <li>
-//                     <div>
-//                         <h4>${contenueExperience.titre}</h4>
-//                         <p>${contenueExperience.emplacement}</p>
-//                         <p>${contenueExperience.periode}</p>
-//                     </div>
-//                     <div class="description">
-//                         <p>${contenueExperience.description}</p>
-//                     </div>
-//                 </li>
-//                 `;
-//             });
-//             contenueExperience.innerHTML = htmlIMC;
-//         } else {
-//             console.log("Aucun article IMC trouvé dans le JSON.");
-//         }
-//     }
-
-//     // *<---------------Articles page Calorie------------------>*//
-//     let htmlCalorie = "";
-//     if (contenueCalorie) { 
-//         if (data.contenueArticlesCalorie) {
-//             data.contenueArticlesCalorie.forEach(function(articleCalorie) {
-//                 htmlCalorie += `
-//                     <h2>${articleCalorie.titre}</h2>
-//                     <div>
-//                         <p>${articleCalorie.description}</p>
-//                         <div class="more-content">
-//                             <p>${articleCalorie.excedent}</p>
-//                         </div>
-//                         <button class="learn-more">Lire plus</button>
-//                     </div> 
-//                     <img src="assets/img/${articleCalorie.image}" alt="${articleCalorie.alt}">
-//                 `;
-//             });
-//             contenueCalorie.innerHTML = htmlCalorie;
-//         } else {
-//             console.log("Aucun article Calorie trouvé dans le JSON.");
-//         }
-//     }
-
-//     // *<---------------Gestion du learnMore------------------>*//
-//     const btns = document.querySelectorAll(".learn-more");
-
-//     btns.forEach(function(btn) {
-//         btn.addEventListener("click", function() {
-//             const moreContent = this.previousElementSibling;
-
-//             if (moreContent.classList.contains("open")) {
-//                 moreContent.classList.remove("open");
-//                 this.textContent = "Lire plus";
-//             } else {
-//                 moreContent.classList.add("open");
-//                 this.textContent = "Lire moins";
-//             }
-//         });
-//     });
-// })
-// .catch(function(error) {
-//     console.error("Erreur lors du fetch :", error);
-// });
+    clickableLis.forEach(li => {
+        li.addEventListener('click', (e) => createRipple(e, li));
+        li.addEventListener('touchstart', (e) => {
+            createRipple(e, li);
+        }, { passive: true });
+    });
+});
