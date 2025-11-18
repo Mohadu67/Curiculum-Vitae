@@ -60,20 +60,20 @@
     }
   ],
   "logos": [
-    { "src": "Assets/img/HTML5_logo_and_wordmark.svg.png", "alt": "HTML5", "desc": "Langage de balisage standard pour le web." },
     { "src": "Assets/img/css.png", "alt": "CSS", "desc": "Styles modernes, responsive et animations." },
     { "src": "Assets/img/js.png", "alt": "JavaScript", "desc": "Langage de programmation côté client." },
-    { "src": "Assets/img/php.png", "alt": "PHP", "desc": "Back-end dynamique et APIs." },
     { "src": "Assets/img/react.png", "alt": "React", "desc": "Bibliothèque UI pour composants réactifs." },
     { "src": "Assets/img/vite.png", "alt": "Vite", "desc": "Outil de build rapide pour le web." },
-    { "src": "Assets/img/git.png", "alt": "Git", "desc": "Contrôle de version distribué." },
-    { "src": "Assets/img/gitlab.png", "alt": "GitLab", "desc": "Plateforme DevOps et CI/CD." },
+    { "src": "Assets/img/logo-nodejs.png", "alt": "Node.Js", "desc": "#" },
+    { "src": "Assets/img/express-js.png", "alt": "Express", "desc": "#" },
+    { "src": "Assets/img/php.png", "alt": "PHP", "desc": "Back-end dynamique et APIs." },
     { "src": "Assets/img/mariadb.png", "alt": "MariaDB", "desc": "Base de données relationnelle." },
     { "src": "Assets/img/linux.png", "alt": "Linux", "desc": "Système d’exploitation open-source." },
     { "src": "Assets/img/adobe.webp", "alt": "Suite Adobe", "desc": "Outils de design et créa (PS/AI/Xd)." },
     { "src": "Assets/img/figma.svg", "alt": "Figma", "desc": "Design collaboratif et prototypage." },
-    { "src": "Assets/img/trello.png", "alt": "Trello", "desc": "Gestion de projet visuelle." },
-    { "src": "Assets/img/slack.png", "alt": "Slack", "desc": "Communication d’équipe." }
+    { "src": "Assets/img/gitlab.png", "alt": "GitLab", "desc": "Plateforme DevOps et CI/CD." },
+    { "src": "Assets/img/GitHub.svg", "alt": "GitHub", "desc": "Contrôle de version distribué." },
+    { "src": "Assets/img/git.png", "alt": "Git", "desc": "Contrôle de version distribué." }
   ]
 }
 
