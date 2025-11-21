@@ -666,7 +666,10 @@ class UniversalFlipModal {
                 <path d="M18 6L6 18M6 6l12 12"/>
             </svg>
         `;
-        closeBtn.addEventListener('click', () => this.closeModal());
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.closeModal();
+        });
 
         // Assemble modal
         flipInner.appendChild(this.front);
@@ -680,16 +683,18 @@ class UniversalFlipModal {
     attachEventListeners() {
         // Single event delegation for all configs
         document.addEventListener('click', (e) => {
+            // Check each config
             for (const { data, config } of UniversalFlipModal.configs) {
                 const item = e.target.closest(config.selector);
                 if (item) {
-                    // Convert data attribute name to camelCase
-                    const dataAttrValue = item.getAttribute('data-' + config.dataAttr.replace(/([A-Z])/g, '-$1').toLowerCase());
-                    const index = parseInt(dataAttrValue);
+                    // Get the index directly from dataset
+                    const index = parseInt(item.dataset.techIndex || item.dataset.skillIndex);
 
                     if (!isNaN(index) && data[index]) {
+                        e.preventDefault();
+                        e.stopPropagation();
                         this.openModal(data[index], config);
-                        break; // Stop after first match
+                        return; // Exit completely after opening
                     }
                 }
             }
