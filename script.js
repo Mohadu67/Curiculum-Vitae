@@ -292,8 +292,8 @@ class DataLoader {
 
             // Initialize flip card modals after data is loaded
             setTimeout(() => {
-                // Tech Skills Modal
-                new UniversalFlipModal(data.logos, {
+                // Register Tech Skills configuration
+                UniversalFlipModal.addConfig(data.logos, {
                     selector: '.tech-logo-item',
                     dataAttr: 'techIndex',
                     cardClass: '',
@@ -311,8 +311,8 @@ class DataLoader {
                     `
                 });
 
-                // Soft Skills Modal
-                new UniversalFlipModal(data.softSkills, {
+                // Register Soft Skills configuration
+                UniversalFlipModal.addConfig(data.softSkills, {
                     selector: '.soft-skill-item',
                     dataAttr: 'skillIndex',
                     cardClass: 'soft-skill-card',
@@ -333,6 +333,9 @@ class DataLoader {
                         ` : ''}
                     `
                 });
+
+                // Create single modal instance
+                new UniversalFlipModal();
             }, 500);
         } catch (error) {
             console.error('Erreur lors du chargement des données:', error);
@@ -604,22 +607,30 @@ class ParallaxEffect {
 }
 
 /* ==========================================
-   UNIVERSAL FLIP MODAL (Optimized)
+   UNIVERSAL FLIP MODAL (Optimized & Fixed)
    ========================================== */
 class UniversalFlipModal {
-    constructor(data, config) {
-        this.data = data;
-        this.config = {
-            selector: config.selector,
-            dataAttr: config.dataAttr,
-            cardClass: config.cardClass || '',
-            renderFront: config.renderFront,
-            renderBack: config.renderBack
-        };
+    static instance = null;
+    static configs = [];
+
+    constructor() {
+        // Singleton pattern - only one modal instance
+        if (UniversalFlipModal.instance) {
+            return UniversalFlipModal.instance;
+        }
+
         this.modalOverlay = null;
         this.flipContainer = null;
         this.isFlipped = false;
+        this.currentConfig = null;
+        this.currentData = null;
+
         this.init();
+        UniversalFlipModal.instance = this;
+    }
+
+    static addConfig(data, config) {
+        UniversalFlipModal.configs.push({ data, config });
     }
 
     init() {
@@ -634,7 +645,7 @@ class UniversalFlipModal {
 
         // Create flip card container
         this.flipContainer = document.createElement('div');
-        this.flipContainer.className = `flip-card-container ${this.config.cardClass}`;
+        this.flipContainer.className = 'flip-card-container';
 
         // Create flip card inner
         const flipInner = document.createElement('div');
@@ -667,13 +678,19 @@ class UniversalFlipModal {
     }
 
     attachEventListeners() {
-        // Add click listeners with event delegation
+        // Single event delegation for all configs
         document.addEventListener('click', (e) => {
-            const item = e.target.closest(this.config.selector);
-            if (item) {
-                const index = parseInt(item.dataset[this.config.dataAttr]);
-                if (!isNaN(index) && this.data[index]) {
-                    this.openModal(this.data[index]);
+            for (const { data, config } of UniversalFlipModal.configs) {
+                const item = e.target.closest(config.selector);
+                if (item) {
+                    // Convert data attribute name to camelCase
+                    const dataAttrValue = item.getAttribute('data-' + config.dataAttr.replace(/([A-Z])/g, '-$1').toLowerCase());
+                    const index = parseInt(dataAttrValue);
+
+                    if (!isNaN(index) && data[index]) {
+                        this.openModal(data[index], config);
+                        break; // Stop after first match
+                    }
                 }
             }
         });
@@ -686,25 +703,31 @@ class UniversalFlipModal {
         });
 
         // Flip card on click
-        this.flipContainer.addEventListener('click', () => {
-            if (!this.isFlipped) {
+        this.flipContainer.addEventListener('click', (e) => {
+            // Don't flip if clicking on close button
+            if (!e.target.closest('.flip-close-btn') && !this.isFlipped) {
                 this.flipCard();
             }
         });
 
         // Close on escape key
-        this.escapeHandler = (e) => {
+        document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.modalOverlay.classList.contains('active')) {
                 this.closeModal();
             }
-        };
-        document.addEventListener('keydown', this.escapeHandler);
+        });
     }
 
-    openModal(itemData) {
+    openModal(itemData, config) {
+        this.currentConfig = config;
+        this.currentData = itemData;
+
+        // Update container class
+        this.flipContainer.className = `flip-card-container ${config.cardClass || ''}`;
+
         // Render front and back faces using config functions
-        this.front.innerHTML = this.config.renderFront(itemData);
-        this.back.innerHTML = this.config.renderBack(itemData);
+        this.front.innerHTML = config.renderFront(itemData);
+        this.back.innerHTML = config.renderBack(itemData);
 
         // Reset flip state
         this.isFlipped = false;
@@ -731,13 +754,6 @@ class UniversalFlipModal {
             this.isFlipped = false;
             this.flipContainer.classList.remove('flipped');
         }, 300);
-    }
-
-    destroy() {
-        document.removeEventListener('keydown', this.escapeHandler);
-        if (this.modalOverlay && this.modalOverlay.parentNode) {
-            this.modalOverlay.parentNode.removeChild(this.modalOverlay);
-        }
     }
 }
 
