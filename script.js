@@ -290,9 +290,10 @@ class DataLoader {
             this.renderExperiences(data.experiences);
             this.renderFormations(data.formations);
 
-            // Initialize flip card modal after data is loaded
+            // Initialize flip card modals after data is loaded
             setTimeout(() => {
                 new FlipCardModal(data.logos);
+                new SoftSkillsFlipModal(data.softSkills);
             }, 500);
         } catch (error) {
             console.error('Erreur lors du chargement des données:', error);
@@ -344,8 +345,9 @@ class DataLoader {
         const container = document.getElementById('softSkillsContainer');
         if (!container || !skills) return;
 
-        container.innerHTML = skills.map(skill => `
-            <div class="soft-skill-item">
+        container.innerHTML = skills.map((skill, index) => `
+            <div class="soft-skill-item" data-skill-index="${index}">
+                <div class="soft-skill-icon">${skill.icon}</div>
                 <strong>${skill.title}</strong>
                 <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
                     ${skill.desc}
@@ -672,6 +674,150 @@ class FlipCardModal {
             <div class="level-badge">${techData.level}</div>
             <div class="experience">📅 ${techData.yearsExperience}</div>
             <div class="description">${techData.detailedDesc}</div>
+        `;
+
+        // Reset flip state
+        this.isFlipped = false;
+        this.flipContainer.classList.remove('flipped');
+
+        // Show modal with animation
+        this.modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    flipCard() {
+        this.isFlipped = true;
+        this.flipContainer.classList.add('flipped');
+    }
+
+    closeModal() {
+        this.modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+
+        // Reset after animation
+        setTimeout(() => {
+            this.isFlipped = false;
+            this.flipContainer.classList.remove('flipped');
+        }, 300);
+    }
+}
+
+/* ==========================================
+   SOFT SKILLS FLIP MODAL
+   ========================================== */
+class SoftSkillsFlipModal {
+    constructor(skillsData) {
+        this.skillsData = skillsData;
+        this.modalOverlay = null;
+        this.flipContainer = null;
+        this.isFlipped = false;
+        this.init();
+    }
+
+    init() {
+        this.createModal();
+        this.attachEventListeners();
+    }
+
+    createModal() {
+        // Create modal overlay
+        this.modalOverlay = document.createElement('div');
+        this.modalOverlay.className = 'flip-modal-overlay';
+
+        // Create flip card container
+        this.flipContainer = document.createElement('div');
+        this.flipContainer.className = 'flip-card-container soft-skill-card';
+
+        // Create flip card inner
+        const flipInner = document.createElement('div');
+        flipInner.className = 'flip-card-inner';
+
+        // Create front and back faces
+        const front = document.createElement('div');
+        front.className = 'flip-card-front';
+
+        const back = document.createElement('div');
+        back.className = 'flip-card-back';
+
+        // Create close button
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'flip-close-btn';
+        closeBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        `;
+        closeBtn.addEventListener('click', () => this.closeModal());
+
+        // Assemble modal
+        flipInner.appendChild(front);
+        flipInner.appendChild(back);
+        this.flipContainer.appendChild(flipInner);
+        this.modalOverlay.appendChild(closeBtn);
+        this.modalOverlay.appendChild(this.flipContainer);
+        document.body.appendChild(this.modalOverlay);
+
+        // Store references
+        this.front = front;
+        this.back = back;
+        this.flipInner = flipInner;
+    }
+
+    attachEventListeners() {
+        // Add click listeners to soft skill items
+        document.addEventListener('click', (e) => {
+            const skillItem = e.target.closest('.soft-skill-item');
+            if (skillItem) {
+                const index = parseInt(skillItem.dataset.skillIndex);
+                if (!isNaN(index) && this.skillsData[index]) {
+                    this.openModal(this.skillsData[index]);
+                }
+            }
+        });
+
+        // Close on overlay click
+        this.modalOverlay.addEventListener('click', (e) => {
+            if (e.target === this.modalOverlay) {
+                this.closeModal();
+            }
+        });
+
+        // Flip card on click
+        this.flipContainer.addEventListener('click', () => {
+            if (!this.isFlipped) {
+                this.flipCard();
+            }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modalOverlay.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+    }
+
+    openModal(skillData) {
+        // Populate front face
+        this.front.innerHTML = `
+            <div class="skill-icon-large">${skillData.icon}</div>
+            <h3>${skillData.title}</h3>
+            <p>${skillData.desc}</p>
+            <div class="flip-hint">Cliquer pour en savoir plus →</div>
+        `;
+
+        // Populate back face with examples
+        const examplesList = skillData.examples
+            ? `<div class="examples-title">💡 Exemples concrets :</div>
+               <ul class="examples-list">
+                   ${skillData.examples.map(example => `<li>${example}</li>`).join('')}
+               </ul>`
+            : '';
+
+        this.back.innerHTML = `
+            <h3>${skillData.icon} ${skillData.title}</h3>
+            <div class="description">${skillData.detailedDesc}</div>
+            ${examplesList}
         `;
 
         // Reset flip state

@@ -20,12 +20,78 @@
     }
   ],
   "softSkills": [
-    { "title": "Travail en équipe", "desc": "Capacité à collaborer efficacement pour atteindre des objectifs communs." },
-    { "title": "Communication", "desc": "Transmettre clairement l'information et écouter activement." },
-    { "title": "Résolution de problèmes", "desc": "Identifier les défis et trouver des solutions créatives et efficaces." },
-    { "title": "Adaptabilité", "desc": "S'ajuster rapidement aux changements et apprendre de nouvelles compétences." },
-    { "title": "Gestion du temps", "desc": "Organiser et prioriser pour respecter les délais." },
-    { "title": "Leadership", "desc": "Motiver et guider une équipe vers la réussite collective." }
+    {
+      "title": "Travail en équipe",
+      "icon": "👥",
+      "desc": "Capacité à collaborer efficacement pour atteindre des objectifs communs.",
+      "detailedDesc": "Expérience en collaboration avec des équipes multidisciplinaires. Capacité à partager les connaissances, accepter les critiques constructives et contribuer activement au succès collectif.",
+      "examples": [
+        "Coordination avec designers et développeurs sur des projets web",
+        "Animation d'équipes de 15+ personnes en restauration",
+        "Participation à des code reviews et pair programming",
+        "Organisation de réunions d'équipe efficaces"
+      ]
+    },
+    {
+      "title": "Communication",
+      "icon": "💬",
+      "desc": "Transmettre clairement l'information et écouter activement.",
+      "detailedDesc": "Excellente capacité à communiquer des concepts techniques à des publics variés. Écoute active pour comprendre les besoins clients et traduire les exigences en solutions concrètes.",
+      "examples": [
+        "Présentation de projets techniques aux clients",
+        "Documentation claire et accessible du code",
+        "Communication inter-services (équipe/direction)",
+        "Rédaction de spécifications fonctionnelles"
+      ]
+    },
+    {
+      "title": "Résolution de problèmes",
+      "icon": "🧩",
+      "desc": "Identifier les défis et trouver des solutions créatives et efficaces.",
+      "detailedDesc": "Approche analytique et méthodique pour diagnostiquer et résoudre les problèmes complexes. Capacité à décomposer les défis en tâches gérables et trouver des solutions innovantes.",
+      "examples": [
+        "Debugging de bugs complexes en production",
+        "Optimisation des performances d'applications",
+        "Résolution de conflits d'équipe",
+        "Amélioration continue des processus"
+      ]
+    },
+    {
+      "title": "Adaptabilité",
+      "icon": "🔄",
+      "desc": "S'ajuster rapidement aux changements et apprendre de nouvelles compétences.",
+      "detailedDesc": "Grande flexibilité face aux changements de priorités et aux nouvelles technologies. Capacité d'apprentissage rapide et d'adaptation à différents environnements de travail.",
+      "examples": [
+        "Apprentissage autonome de nouvelles technologies",
+        "Transition management → développement web",
+        "Adaptation aux méthodologies agiles",
+        "Gestion du changement en période de crise"
+      ]
+    },
+    {
+      "title": "Gestion du temps",
+      "icon": "⏰",
+      "desc": "Organiser et prioriser pour respecter les délais.",
+      "detailedDesc": "Excellente organisation pour gérer plusieurs projets simultanément. Utilisation de méthodes de priorisation efficaces (Eisenhower, Pomodoro) et respect rigoureux des deadlines.",
+      "examples": [
+        "Gestion de plusieurs projets clients en parallèle",
+        "Respect des deadlines avec livraisons de qualité",
+        "Planification sprint avec méthode Scrum",
+        "Équilibrage vie pro/perso avec formation continue"
+      ]
+    },
+    {
+      "title": "Leadership",
+      "icon": "⭐",
+      "desc": "Motiver et guider une équipe vers la réussite collective.",
+      "detailedDesc": "Expérience en management d'équipes avec capacité à inspirer, motiver et développer les talents. Leadership par l'exemple avec une approche bienveillante et orientée résultats.",
+      "examples": [
+        "Management d'équipes de 15+ personnes",
+        "Mentorat de développeurs juniors",
+        "Gestion de projets de A à Z",
+        "Prise de décisions stratégiques sous pression"
+      ]
+    }
   ],
   "experiences": [
     {

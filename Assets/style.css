@@ -1646,3 +1646,125 @@ section {
         font-size: 0.95rem;
     }
 }
+
+/* ==========================================
+   SOFT SKILLS FLIP CARDS
+   ========================================== */
+
+/* Enhanced Soft Skill Item */
+.soft-skill-item {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.soft-skill-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.soft-skill-item:hover .soft-skill-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.soft-skill-item::after {
+    content: 'Cliquer pour en savoir plus';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(16, 185, 129, 0.9);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.soft-skill-item:hover::after {
+    opacity: 1;
+}
+
+/* Soft Skill Flip Card Variations */
+.flip-card-container.soft-skill-card .flip-card-front {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+}
+
+.flip-card-container.soft-skill-card .flip-card-back {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%);
+}
+
+.flip-card-container.soft-skill-card .flip-card-front,
+.flip-card-container.soft-skill-card .flip-card-back {
+    box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+}
+
+.flip-card-container.soft-skill-card .flip-card-front .skill-icon-large {
+    font-size: 8rem;
+    margin-bottom: 1rem;
+    animation: float-icon 3s ease-in-out infinite;
+}
+
+@keyframes float-icon {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.flip-card-container.soft-skill-card .flip-card-front .flip-hint {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+.flip-card-container.soft-skill-card .flip-card-back .level-badge {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+
+.flip-card-container.soft-skill-card .flip-card-back .experience {
+    color: var(--success-color);
+}
+
+/* Examples List in Soft Skills */
+.flip-card-back .examples-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.flip-card-back .examples-list li {
+    color: var(--text-secondary);
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    line-height: 1.6;
+}
+
+.flip-card-back .examples-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.flip-card-back .examples-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
