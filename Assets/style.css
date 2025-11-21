@@ -1570,11 +1570,6 @@ section {
     position: relative;
 }
 
-.tech-logo-item > * {
-    position: relative;
-    z-index: 2; /* Above shimmer effect */
-}
-
 .tech-logo-item::after {
     content: 'Cliquer pour plus d\'infos';
     position: absolute;
@@ -1590,7 +1585,6 @@ section {
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
-    z-index: 3; /* Above everything */
 }
 
 .tech-logo-item:hover::after {
