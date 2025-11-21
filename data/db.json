@@ -11,6 +11,15 @@
     },
     {
       "id": 2,
+      "title": "Equestra",
+      "description": "Application web de gestion pour un centre de loisirs. Elle permet la gestion des membres, des réservations de seance et plannification d'activité, offrant une expérience fluide aux utilisateurs.",
+      "image": "Assets/img/logoEquestra.svg",
+      "imageClass": "harmonith-image",
+      "link": "https://gitlab.com/Mohamiani/projetran.git",
+      "tags": ["Figma", "PHP", "MariaDB", "SQL", "HTML", "CSS", "JavaScript" ]
+    },
+    {
+      "id": 3,
       "title": "CV Interactif",
       "description": "Curriculum Vitae entièrement codé avec animations et interactions. Une approche moderne pour présenter son parcours professionnel.",
       "image": "Assets/img/Capture d'écran 2025-07-08 142235.png",
