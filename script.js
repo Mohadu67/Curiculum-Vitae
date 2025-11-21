@@ -334,6 +334,73 @@ class DataLoader {
                     `
                 });
 
+                // Register Experiences configuration
+                UniversalFlipModal.addConfig(data.experiences, {
+                    selector: '.timeline-item.experience-item',
+                    dataAttr: 'expIndex',
+                    cardClass: 'experience-card',
+                    renderFront: (exp) => `
+                        <div class="skill-icon-large">${exp.icon || '💼'}</div>
+                        <h3>${exp.title}</h3>
+                        <p class="period">${exp.period}</p>
+                        <p class="location">${exp.location}</p>
+                        <div class="flip-hint">Cliquer pour voir les détails →</div>
+                    `,
+                    renderBack: (exp) => `
+                        <h3>${exp.icon || '💼'} ${exp.title}</h3>
+                        <div class="location-badge">${exp.location}</div>
+                        <div class="experience">📅 ${exp.period}</div>
+                        ${exp.tasks ? `
+                            <div class="examples-title">📋 Missions principales :</div>
+                            <ul class="examples-list">
+                                ${exp.tasks.map(task => `<li>${task}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                        ${exp.achievements ? `
+                            <div class="examples-title">🏆 Réalisations :</div>
+                            <ul class="examples-list achievements-list">
+                                ${exp.achievements.map(ach => `<li>${ach}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                        ${exp.technologies ? `
+                            <div class="tech-tags">
+                                ${exp.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    `
+                });
+
+                // Register Formations configuration
+                UniversalFlipModal.addConfig(data.formations, {
+                    selector: '.timeline-item.formation-item',
+                    dataAttr: 'formationIndex',
+                    cardClass: 'formation-card',
+                    renderFront: (formation) => `
+                        <div class="skill-icon-large">${formation.icon || '🎓'}</div>
+                        <h3>${formation.title}</h3>
+                        <p class="period">${formation.period}</p>
+                        <p class="location">${formation.org}</p>
+                        <div class="flip-hint">Cliquer pour voir le programme →</div>
+                    `,
+                    renderBack: (formation) => `
+                        <h3>${formation.icon || '🎓'} ${formation.title}</h3>
+                        <div class="location-badge">${formation.org}</div>
+                        <div class="experience">📅 ${formation.period}</div>
+                        ${formation.status ? `<div class="status-badge">${formation.status}</div>` : ''}
+                        ${formation.modules ? `
+                            <div class="examples-title">📚 Modules enseignés :</div>
+                            <ul class="examples-list modules-list">
+                                ${formation.modules.map(mod => `<li>${mod}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                        ${formation.skills ? `
+                            <div class="tech-tags">
+                                ${formation.skills.map(skill => `<span class="tag">${skill}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    `
+                });
+
                 // Create single modal instance
                 new UniversalFlipModal();
             }, 500);
@@ -403,12 +470,14 @@ class DataLoader {
         const container = document.getElementById('experienceTimeline');
         if (!container || !experiences) return;
 
-        container.innerHTML = experiences.map(exp => `
-            <div class="timeline-item">
+        container.innerHTML = experiences.map((exp, index) => `
+            <div class="timeline-item experience-item" data-exp-index="${index}">
+                <div class="timeline-icon">${exp.icon || '💼'}</div>
                 <h4>${exp.title}</h4>
                 <p class="period">${exp.period}</p>
                 <p class="location">${exp.location}</p>
                 <p class="description">${exp.description}</p>
+                <div class="timeline-hint">Cliquer pour plus de détails →</div>
             </div>
         `).join('');
     }
@@ -417,12 +486,14 @@ class DataLoader {
         const container = document.getElementById('formationsTimeline');
         if (!container || !formations) return;
 
-        container.innerHTML = formations.map(formation => `
-            <div class="timeline-item">
+        container.innerHTML = formations.map((formation, index) => `
+            <div class="timeline-item formation-item" data-formation-index="${index}">
+                <div class="timeline-icon">${formation.icon || '🎓'}</div>
                 <h4>${formation.title}</h4>
                 <p class="period">${formation.period}</p>
                 <p class="location">${formation.org}</p>
                 <p class="description">${formation.detail}</p>
+                <div class="timeline-hint">Cliquer pour voir le programme →</div>
             </div>
         `).join('');
     }
@@ -688,7 +759,12 @@ class UniversalFlipModal {
                 const item = e.target.closest(config.selector);
                 if (item) {
                     // Get the index directly from dataset
-                    const index = parseInt(item.dataset.techIndex || item.dataset.skillIndex);
+                    const index = parseInt(
+                        item.dataset.techIndex ||
+                        item.dataset.skillIndex ||
+                        item.dataset.expIndex ||
+                        item.dataset.formationIndex
+                    );
 
                     if (!isNaN(index) && data[index]) {
                         e.preventDefault();
