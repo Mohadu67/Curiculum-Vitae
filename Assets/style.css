@@ -968,6 +968,29 @@ section {
     line-height: 1.8;
 }
 
+.timeline-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.timeline-hint {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-item:hover .timeline-hint {
+    opacity: 1;
+}
+
 /* ==========================================
    CONTACT SECTION
    ========================================== */
@@ -1570,11 +1593,6 @@ section {
     position: relative;
 }
 
-.tech-logo-item > * {
-    position: relative;
-    z-index: 2; /* Above shimmer effect */
-}
-
 .tech-logo-item::after {
     content: 'Cliquer pour plus d\'infos';
     position: absolute;
@@ -1590,7 +1608,6 @@ section {
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
-    z-index: 3; /* Above everything */
 }
 
 .tech-logo-item:hover::after {
@@ -1773,6 +1790,103 @@ section {
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
+}
+
+/* Experience Card Variations */
+.flip-card-container.experience-card .flip-card-front {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+}
+
+.flip-card-container.experience-card .flip-card-back {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.15) 100%);
+}
+
+.flip-card-container.experience-card .flip-card-front,
+.flip-card-container.experience-card .flip-card-back {
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+}
+
+.flip-card-container.experience-card .flip-hint {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: #8B5CF6;
+    color: #8B5CF6;
+}
+
+/* Formation Card Variations */
+.flip-card-container.formation-card .flip-card-front {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(219, 39, 119, 0.1) 100%);
+}
+
+.flip-card-container.formation-card .flip-card-back {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(219, 39, 119, 0.15) 100%);
+}
+
+.flip-card-container.formation-card .flip-card-front,
+.flip-card-container.formation-card .flip-card-back {
+    box-shadow: 0 20px 60px rgba(236, 72, 153, 0.3);
+}
+
+.flip-card-container.formation-card .flip-hint {
+    background: rgba(236, 72, 153, 0.2);
+    border-color: #EC4899;
+    color: #EC4899;
+}
+
+/* Location Badge */
+.flip-card-back .location-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Status Badge */
+.flip-card-back .status-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--gradient-primary);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+/* Achievements & Modules Lists */
+.flip-card-back .achievements-list li:before,
+.flip-card-back .modules-list li:before {
+    content: '🏆';
+}
+
+.flip-card-back .modules-list li:before {
+    content: '📚';
+}
+
+/* Tech Tags in Modal */
+.flip-card-back .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.flip-card-back .tech-tags .tag {
+    padding: 0.4rem 0.8rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.flip-card-back .tech-tags .tag:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
 }
 
 /* ==========================================

@@ -107,25 +107,82 @@
       "title": "Manager",
       "location": "KFC | Homme de Fer, Strasbourg",
       "period": "Septembre 2018 à Août 2021",
-      "description": "Gestion de service, proximité terrain, respect des standards et des normes d’hygiène, optimisation de la productivité et préparation du terrain pour assurer la continuité d’exploitation."
+      "description": "Gestion de service, proximité terrain, respect des standards et des normes d'hygiène, optimisation de la productivité et préparation du terrain pour assurer la continuité d'exploitation.",
+      "icon": "🍗",
+      "tasks": [
+        "Supervision d'équipes de 15+ collaborateurs",
+        "Gestion des plannings et optimisation RH",
+        "Contrôle qualité et respect normes HACCP",
+        "Formation et accompagnement des nouveaux employés",
+        "Analyse des KPIs et reporting quotidien",
+        "Gestion des stocks et réduction du gaspillage"
+      ],
+      "achievements": [
+        "Amélioration de 25% de la satisfaction client",
+        "Réduction de 15% du turnover équipe",
+        "Optimisation des coûts de main d'œuvre"
+      ]
     },
     {
       "title": "RGM",
       "location": "Pizza Hut | Sengewald, Strasbourg",
       "period": "Septembre 2021 à Février 2023",
-      "description": "Pilotage approvisionnement, opérations marketing, contrôle des coûts, analyse des tableaux de bord, formation des équipes et amélioration continue des résultats opérationnels."
+      "description": "Pilotage approvisionnement, opérations marketing, contrôle des coûts, analyse des tableaux de bord, formation des équipes et amélioration continue des résultats opérationnels.",
+      "icon": "🍕",
+      "tasks": [
+        "Pilotage P&L et contrôle budgétaire",
+        "Gestion complète approvisionnements",
+        "Déploiement campagnes marketing locales",
+        "Formation managers et développement compétences",
+        "Analyse tableaux de bord (CA, food cost, labor)",
+        "Amélioration continue processus opérationnels"
+      ],
+      "achievements": [
+        "Augmentation CA de 18% sur la période",
+        "Réduction food cost de 3 points",
+        "Formation de 5 managers promus"
+      ]
     },
     {
       "title": "RGM",
       "location": "KFC | Porte de l'Hôpital, Strasbourg",
       "period": "Mars 2023 à Décembre 2023",
-      "description": "Ouverture de restaurant, formation des équipiers et managers, gestion des stocks/coûts, supervision des pôles, et actions marketing pour accroître le chiffre d’affaires."
+      "description": "Ouverture de restaurant, formation des équipiers et managers, gestion des stocks/coûts, supervision des pôles, et actions marketing pour accroître le chiffre d'affaires.",
+      "icon": "🍗",
+      "tasks": [
+        "Ouverture complète nouveau restaurant",
+        "Recrutement et formation 30+ collaborateurs",
+        "Mise en place processus et procédures",
+        "Gestion stocks, approvisionnement, inventaires",
+        "Supervision pôles cuisine/salle/drive",
+        "Actions marketing ouverture et fidélisation"
+      ],
+      "achievements": [
+        "Ouverture réussie dans les délais",
+        "Atteinte objectifs CA dès le 2ème mois",
+        "Constitution équipe performante et autonome"
+      ]
     },
     {
       "title": "Développeur Web Junior",
       "location": "MobiStras",
       "period": "Mars 2025 à Septembre 2025",
-      "description": "Développement et maintenance d’un site vitrine. Pages responsives, fonctionnalités JS simples, formulaires reliés à MySQL, GitHub pour le suivi, correctifs et améliorations UX."
+      "description": "Développement et maintenance d'un site vitrine. Pages responsives, fonctionnalités JS simples, formulaires reliés à MySQL, GitHub pour le suivi, correctifs et améliorations UX.",
+      "icon": "💻",
+      "tasks": [
+        "Développement pages responsive (HTML/CSS/JS)",
+        "Intégration formulaires avec backend MySQL",
+        "Maintenance et correctifs bugs",
+        "Amélioration UX/UI suite feedback utilisateurs",
+        "Versioning et collaboration via GitHub",
+        "Optimisation performances et SEO"
+      ],
+      "achievements": [
+        "Amélioration temps de chargement de 40%",
+        "Refonte complète interface mobile",
+        "Intégration système de contact fonctionnel"
+      ],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "MySQL", "Git", "GitHub"]
     }
   ],
   "formations": [
@@ -133,25 +190,75 @@
       "title": "CDA — Concepteur Développeur d'Applications",
       "org": "Niveau 6 (Bachelor) | Formation en cours",
       "period": "En cours — Septembre 2025 à Juillet 2026",
-      "detail": "Architecture logicielle, POO, tests, développement front/back complet, patterns et gestion de projet avancée."
+      "detail": "Architecture logicielle, POO, tests, développement front/back complet, patterns et gestion de projet avancée.",
+      "icon": "🎓",
+      "modules": [
+        "Architecture logicielle et Design Patterns",
+        "Programmation Orientée Objet avancée",
+        "Tests unitaires, intégration et E2E",
+        "Développement Full Stack (React, Node.js, etc.)",
+        "DevOps et CI/CD",
+        "Gestion de projet Agile (Scrum, Kanban)",
+        "Sécurité des applications web",
+        "Microservices et Architecture distribuée"
+      ],
+      "skills": ["Architecture", "POO", "TDD", "DevOps", "Agile", "Microservices"],
+      "status": "En cours"
     },
     {
       "title": "Développeur Web et Web Mobile",
       "org": "CCI Campus | Formation Certifiante RNCP Niveau 5 (Bac +2)",
       "period": "Acquis — Septembre 2024 à Mars 2025",
-      "detail": "HTML, CSS, JavaScript, PHP, SQL, bases de React, sites responsives, intégration d’APIs, Git, accessibilité, SEO."
+      "detail": "HTML, CSS, JavaScript, PHP, SQL, bases de React, sites responsives, intégration d'APIs, Git, accessibilité, SEO.",
+      "icon": "💼",
+      "modules": [
+        "HTML5 sémantique et accessibilité",
+        "CSS3, animations et responsive design",
+        "JavaScript ES6+ et manipulation DOM",
+        "PHP orienté objet et MVC",
+        "SQL et conception de bases de données",
+        "React.js et composants réutilisables",
+        "Intégration d'APIs REST",
+        "Git, GitHub et travail collaboratif",
+        "SEO et optimisation performances"
+      ],
+      "skills": ["HTML", "CSS", "JavaScript", "PHP", "SQL", "React", "Git", "SEO"],
+      "status": "Certifié"
     },
     {
       "title": "Gestion de restaurant",
       "org": "Groupe AmRest — Pizza Hut France",
       "period": "Septembre 2021 à Décembre 2021",
-      "detail": "Management d’équipe, gestion des stocks et coûts, satisfaction client et optimisation des opérations."
+      "detail": "Management d'équipe, gestion des stocks et coûts, satisfaction client et optimisation des opérations.",
+      "icon": "🏆",
+      "modules": [
+        "Management d'équipe et leadership",
+        "Gestion des stocks et approvisionnement",
+        "Contrôle des coûts (food cost, labor cost)",
+        "Satisfaction client et gestion réclamations",
+        "Optimisation des opérations quotidiennes",
+        "Analyse P&L et tableaux de bord",
+        "Standards qualité et normes d'hygiène"
+      ],
+      "skills": ["Management", "Gestion", "Leadership", "Analyse", "Qualité"],
+      "status": "Certifié"
     },
     {
       "title": "Gestion de service",
       "org": "KFC France — Qalysta",
       "period": "2020",
-      "detail": "Coordination de service, respect qualité/hygiène, optimisation des flux et leadership opérationnel."
+      "detail": "Coordination de service, respect qualité/hygiène, optimisation des flux et leadership opérationnel.",
+      "icon": "📋",
+      "modules": [
+        "Coordination et supervision d'équipe",
+        "Respect des standards qualité/hygiène",
+        "Optimisation des flux opérationnels",
+        "Leadership et gestion de conflits",
+        "Formation et développement équipe",
+        "Gestion du stress et des pics d'activité"
+      ],
+      "skills": ["Coordination", "Qualité", "Leadership", "Formation", "Gestion"],
+      "status": "Certifié"
     }
   ],
   "logos": [
