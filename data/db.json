@@ -7,7 +7,12 @@
       "image": "Assets/img/logoHarmonith.svg",
       "imageClass": "harmonith-image",
       "link": "https://incandescent-dolphin-d90e0a.netlify.app/",
-      "tags": ["React Vite", "Node.js", "Express", "MongoDB", "CSS Module", "Figma", "Illustrator"]
+      "tags": ["React Vite", "Node.js", "Express", "MongoDB", "CSS Module", "Figma", "Illustrator"],
+      "colors": {
+        "primary": "#b8ddd1",
+        "secondary": "#f7b186",
+        "accent": "#95d0c0"
+      }
     },
     {
       "id": 2,
@@ -16,7 +21,12 @@
       "image": "Assets/img/logoEquestra.svg",
       "imageClass": "harmonith-image",
       "link": "https://gitlab.com/Mohamiani/projetran.git",
-      "tags": ["Figma", "PHP", "MariaDB", "SQL", "HTML", "CSS", "JavaScript" ]
+      "tags": ["Figma", "PHP", "MariaDB", "SQL", "HTML", "CSS", "JavaScript" ],
+      "colors": {
+        "primary": "#3B82F6",
+        "secondary": "#10B981",
+        "accent": "#F59E0B"
+      }
     },
     {
       "id": 3,
@@ -25,7 +35,12 @@
       "image": "Assets/img/Capture d'écran 2025-07-08 142235.png",
       "imageClass": "",
       "link": "https://nono13122002.github.io/CV/index.html",
-      "tags": ["HTML5", "CSS3", "Animation"]
+      "tags": ["HTML5", "CSS3", "Animation"],
+      "colors": {
+        "primary": "#8B5CF6",
+        "secondary": "#6366F1",
+        "accent": "#A78BFA"
+      }
     }
   ],
   "softSkills": [

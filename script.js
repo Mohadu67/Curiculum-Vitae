@@ -427,7 +427,11 @@ class DataLoader {
         if (!container || !projects) return;
 
         container.innerHTML = projects.map(project => `
-            <div class="project-card glass-card" data-link="${project.link}">
+            <div class="project-card glass-card"
+                 data-link="${project.link}"
+                 style="--project-primary: ${project.colors?.primary || '#6B9FE8'};
+                        --project-secondary: ${project.colors?.secondary || '#8BB5F0'};
+                        --project-accent: ${project.colors?.accent || '#A8CCF5'};">
                 <div class="project-image ${project.imageClass}">
                     <img src="${project.image}" alt="${project.title}">
                     <div class="project-overlay">
