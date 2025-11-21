@@ -764,6 +764,7 @@ section {
    PROJECTS SECTION
    ========================================== */
 .projects-grid {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
@@ -2212,7 +2213,8 @@ section {
     }
 
     .tech-logos-grid::before,
-    .soft-skills-grid::before {
+    .soft-skills-grid::before,
+    .projects-grid::before {
         content: '';
         position: absolute;
         inset: -2px;
