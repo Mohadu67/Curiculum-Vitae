@@ -427,16 +427,16 @@ class DataLoader {
         if (!container || !projects) return;
 
         container.innerHTML = projects.map(project => `
-            <div class="project-card glass-card">
+            <div class="project-card glass-card" data-link="${project.link}">
                 <div class="project-image ${project.imageClass}">
                     <img src="${project.image}" alt="${project.title}">
                     <div class="project-overlay">
-                        <a href="${project.link}" target="_blank" class="project-link">
+                        <span class="project-link">
                             Voir le projet
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
                                 <path d="M7 13L13 7M13 7H7M13 7V13" stroke-width="2" stroke-linecap="round"/>
                             </svg>
-                        </a>
+                        </span>
                     </div>
                 </div>
                 <div class="project-content">
@@ -448,6 +448,16 @@ class DataLoader {
                 </div>
             </div>
         `).join('');
+
+        // Ajouter event listeners pour rendre les cards cliquables
+        container.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const link = card.dataset.link;
+                if (link) {
+                    window.open(link, '_blank');
+                }
+            });
+        });
     }
 
     renderSoftSkills(skills) {
