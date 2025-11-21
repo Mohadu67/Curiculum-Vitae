@@ -784,7 +784,6 @@ section {
 }
 
 .project-image {
-    position: relative;
     height: 250px;
     overflow: hidden;
     border-radius: 12px;
