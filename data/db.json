@@ -1,4 +1,24 @@
 {
+  "projects": [
+    {
+      "id": 1,
+      "title": "Harmonith",
+      "description": "Application de calcul d'IMC et de calories. Interface moderne et intuitive pour suivre votre nutrition et vos objectifs de santé.",
+      "image": "Assets/img/logoHarmonith.svg",
+      "imageClass": "harmonith-image",
+      "link": "https://incandescent-dolphin-d90e0a.netlify.app/",
+      "tags": ["React Vite", "Node.js", "Express", "MongoDB", "CSS Module", "Figma", "Illustrator"]
+    },
+    {
+      "id": 2,
+      "title": "CV Interactif",
+      "description": "Curriculum Vitae entièrement codé avec animations et interactions. Une approche moderne pour présenter son parcours professionnel.",
+      "image": "Assets/img/Capture d'écran 2025-07-08 142235.png",
+      "imageClass": "",
+      "link": "https://nono13122002.github.io/CV/index.html",
+      "tags": ["HTML5", "CSS3", "Animation"]
+    }
+  ],
   "softSkills": [
     { "title": "Travail en équipe", "desc": "Capacité à collaborer efficacement pour atteindre des objectifs communs." },
     { "title": "Communication", "desc": "Transmettre clairement l'information et écouter activement." },
@@ -60,20 +80,118 @@
     }
   ],
   "logos": [
-    { "src": "Assets/img/css.png", "alt": "CSS", "desc": "Styles modernes, responsive et animations." },
-    { "src": "Assets/img/js.png", "alt": "JavaScript", "desc": "Langage de programmation côté client." },
-    { "src": "Assets/img/react.png", "alt": "React", "desc": "Bibliothèque UI pour composants réactifs." },
-    { "src": "Assets/img/vite.png", "alt": "Vite", "desc": "Outil de build rapide pour le web." },
-    { "src": "Assets/img/logo-nodejs.png", "alt": "Node.Js", "desc": "#" },
-    { "src": "Assets/img/express-js.png", "alt": "Express", "desc": "#" },
-    { "src": "Assets/img/php.png", "alt": "PHP", "desc": "Back-end dynamique et APIs." },
-    { "src": "Assets/img/mariadb.png", "alt": "MariaDB", "desc": "Base de données relationnelle." },
-    { "src": "Assets/img/linux.png", "alt": "Linux", "desc": "Système d’exploitation open-source." },
-    { "src": "Assets/img/adobe.webp", "alt": "Suite Adobe", "desc": "Outils de design et créa (PS/AI/Xd)." },
-    { "src": "Assets/img/figma.svg", "alt": "Figma", "desc": "Design collaboratif et prototypage." },
-    { "src": "Assets/img/gitlab.png", "alt": "GitLab", "desc": "Plateforme DevOps et CI/CD." },
-    { "src": "Assets/img/GitHub.svg", "alt": "GitHub", "desc": "Contrôle de version distribué." },
-    { "src": "Assets/img/git.png", "alt": "Git", "desc": "Contrôle de version distribué." }
+    {
+      "src": "Assets/img/css.png",
+      "alt": "CSS",
+      "desc": "Styles modernes, responsive et animations.",
+      "detailedDesc": "Maîtrise avancée de CSS3, animations complexes, Flexbox, Grid, responsive design, préprocesseurs (SASS), et CSS-in-JS. Création d'interfaces modernes et performantes.",
+      "level": "Expert",
+      "yearsExperience": "3+ ans"
+    },
+    {
+      "src": "Assets/img/js.png",
+      "alt": "JavaScript",
+      "desc": "Langage de programmation côté client.",
+      "detailedDesc": "Expertise en JavaScript moderne (ES6+), programmation asynchrone, manipulation du DOM, APIs Web, et patterns de conception. Code propre et maintenable.",
+      "level": "Expert",
+      "yearsExperience": "3+ ans"
+    },
+    {
+      "src": "Assets/img/react.png",
+      "alt": "React",
+      "desc": "Bibliothèque UI pour composants réactifs.",
+      "detailedDesc": "Développement d'applications React avec Hooks, Context API, React Router. Gestion d'état, optimisation des performances, et création de composants réutilisables.",
+      "level": "Avancé",
+      "yearsExperience": "2+ ans"
+    },
+    {
+      "src": "Assets/img/vite.png",
+      "alt": "Vite",
+      "desc": "Outil de build rapide pour le web.",
+      "detailedDesc": "Configuration et optimisation de projets avec Vite. Build ultra-rapide, Hot Module Replacement, et configuration avancée pour des projets React/Vue performants.",
+      "level": "Avancé",
+      "yearsExperience": "2+ ans"
+    },
+    {
+      "src": "Assets/img/logo-nodejs.png",
+      "alt": "Node.js",
+      "desc": "Environnement d'exécution JavaScript côté serveur.",
+      "detailedDesc": "Développement backend avec Node.js, création d'APIs RESTful, gestion asynchrone, modules npm, et architecture serveur scalable. Expérience avec Express et MongoDB.",
+      "level": "Avancé",
+      "yearsExperience": "2+ ans"
+    },
+    {
+      "src": "Assets/img/express-js.png",
+      "alt": "Express",
+      "desc": "Framework web minimaliste pour Node.js.",
+      "detailedDesc": "Création d'APIs robustes avec Express, middleware custom, authentification JWT, gestion des erreurs, et sécurisation des routes. Architecture MVC.",
+      "level": "Avancé",
+      "yearsExperience": "2+ ans"
+    },
+    {
+      "src": "Assets/img/php.png",
+      "alt": "PHP",
+      "desc": "Back-end dynamique et APIs.",
+      "detailedDesc": "Développement PHP orienté objet, création d'APIs REST, intégration de bases de données, gestion des sessions, et sécurité (protection XSS, CSRF, SQL injection).",
+      "level": "Intermédiaire",
+      "yearsExperience": "1+ an"
+    },
+    {
+      "src": "Assets/img/mariadb.png",
+      "alt": "MariaDB",
+      "desc": "Base de données relationnelle.",
+      "detailedDesc": "Conception de schémas de bases de données, requêtes SQL complexes, optimisation des performances, relations (1-N, N-N), indexes, et procédures stockées.",
+      "level": "Avancé",
+      "yearsExperience": "2+ ans"
+    },
+    {
+      "src": "Assets/img/linux.png",
+      "alt": "Linux",
+      "desc": "Système d'exploitation open-source.",
+      "detailedDesc": "Administration système Linux, ligne de commande (bash), gestion des permissions, configuration de serveurs web (Apache/Nginx), déploiement d'applications, et automatisation.",
+      "level": "Intermédiaire",
+      "yearsExperience": "2+ ans"
+    },
+    {
+      "src": "Assets/img/adobe.webp",
+      "alt": "Suite Adobe",
+      "desc": "Outils de design et créa (PS/AI/Xd).",
+      "detailedDesc": "Création de maquettes et d'assets avec Photoshop, Illustrator et XD. Design d'interfaces, retouche photo, création de logos, et prototypage interactif.",
+      "level": "Intermédiaire",
+      "yearsExperience": "2+ ans"
+    },
+    {
+      "src": "Assets/img/figma.svg",
+      "alt": "Figma",
+      "desc": "Design collaboratif et prototypage.",
+      "detailedDesc": "Design UI/UX avec Figma, création de systèmes de design, prototypage interactif, collaboration en temps réel, et handoff développeur avec Auto Layout.",
+      "level": "Avancé",
+      "yearsExperience": "2+ ans"
+    },
+    {
+      "src": "Assets/img/gitlab.png",
+      "alt": "GitLab",
+      "desc": "Plateforme DevOps et CI/CD.",
+      "detailedDesc": "Gestion de projets avec GitLab, configuration de pipelines CI/CD, automatisation des tests et déploiements, merge requests, et intégration continue.",
+      "level": "Intermédiaire",
+      "yearsExperience": "1+ an"
+    },
+    {
+      "src": "Assets/img/GitHub.svg",
+      "alt": "GitHub",
+      "desc": "Plateforme de développement collaboratif.",
+      "detailedDesc": "Gestion de code avec GitHub, pull requests, code review, GitHub Actions pour CI/CD, gestion de projet avec Issues/Projects, et collaboration open-source.",
+      "level": "Avancé",
+      "yearsExperience": "3+ ans"
+    },
+    {
+      "src": "Assets/img/git.png",
+      "alt": "Git",
+      "desc": "Contrôle de version distribué.",
+      "detailedDesc": "Maîtrise de Git pour le versioning, branches, merge/rebase, résolution de conflits, historique propre avec commits atomiques, et workflows collaboratifs (Git Flow).",
+      "level": "Avancé",
+      "yearsExperience": "3+ ans"
+    }
   ]
 }
 

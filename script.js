@@ -286,9 +286,14 @@ class DataLoader {
 
             this.renderSoftSkills(data.softSkills);
             this.renderTechLogos(data.logos);
-            this.renderLogos(data.logos);
+            this.renderProjects(data.projects);
             this.renderExperiences(data.experiences);
             this.renderFormations(data.formations);
+
+            // Initialize flip card modal after data is loaded
+            setTimeout(() => {
+                new FlipCardModal(data.logos);
+            }, 500);
         } catch (error) {
             console.error('Erreur lors du chargement des données:', error);
             this.renderFallbackData();
@@ -299,10 +304,38 @@ class DataLoader {
         const container = document.getElementById('techLogosGrid');
         if (!container || !logos) return;
 
-        container.innerHTML = logos.map(logo => `
-            <div class="tech-logo-item">
+        container.innerHTML = logos.map((logo, index) => `
+            <div class="tech-logo-item" data-tech-index="${index}">
                 <img src="${logo.src}" alt="${logo.alt}">
                 <span>${logo.alt}</span>
+            </div>
+        `).join('');
+    }
+
+    renderProjects(projects) {
+        const container = document.getElementById('projectsGrid');
+        if (!container || !projects) return;
+
+        container.innerHTML = projects.map(project => `
+            <div class="project-card glass-card">
+                <div class="project-image ${project.imageClass}">
+                    <img src="${project.image}" alt="${project.title}">
+                    <div class="project-overlay">
+                        <a href="${project.link}" target="_blank" class="project-link">
+                            Voir le projet
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                                <path d="M7 13L13 7M13 7H7M13 7V13" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <div class="project-tags">
+                        ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
             </div>
         `).join('');
     }
@@ -321,18 +354,6 @@ class DataLoader {
         `).join('');
     }
 
-    renderLogos(logos) {
-        const track = document.getElementById('logosTrack');
-        if (!track || !logos) return;
-
-        const logoHTML = logos.map(logo => `
-            <div class="logo-item">
-                <img src="${logo.src}" alt="${logo.alt}">
-            </div>
-        `).join('');
-
-        track.innerHTML = logoHTML + logoHTML;
-    }
 
     renderExperiences(experiences) {
         const container = document.getElementById('experienceTimeline');
@@ -538,6 +559,144 @@ class ParallaxEffect {
                 el.style.transform = `translateY(${scrolled * speed}px)`;
             });
         });
+    }
+}
+
+/* ==========================================
+   FLIP CARD MODAL
+   ========================================== */
+class FlipCardModal {
+    constructor(techData) {
+        this.techData = techData;
+        this.modalOverlay = null;
+        this.flipContainer = null;
+        this.isFlipped = false;
+        this.init();
+    }
+
+    init() {
+        this.createModal();
+        this.attachEventListeners();
+    }
+
+    createModal() {
+        // Create modal overlay
+        this.modalOverlay = document.createElement('div');
+        this.modalOverlay.className = 'flip-modal-overlay';
+
+        // Create flip card container
+        this.flipContainer = document.createElement('div');
+        this.flipContainer.className = 'flip-card-container';
+
+        // Create flip card inner
+        const flipInner = document.createElement('div');
+        flipInner.className = 'flip-card-inner';
+
+        // Create front and back faces
+        const front = document.createElement('div');
+        front.className = 'flip-card-front';
+
+        const back = document.createElement('div');
+        back.className = 'flip-card-back';
+
+        // Create close button
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'flip-close-btn';
+        closeBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        `;
+        closeBtn.addEventListener('click', () => this.closeModal());
+
+        // Assemble modal
+        flipInner.appendChild(front);
+        flipInner.appendChild(back);
+        this.flipContainer.appendChild(flipInner);
+        this.modalOverlay.appendChild(closeBtn);
+        this.modalOverlay.appendChild(this.flipContainer);
+        document.body.appendChild(this.modalOverlay);
+
+        // Store references
+        this.front = front;
+        this.back = back;
+        this.flipInner = flipInner;
+    }
+
+    attachEventListeners() {
+        // Add click listeners to tech logo items
+        document.addEventListener('click', (e) => {
+            const techItem = e.target.closest('.tech-logo-item');
+            if (techItem) {
+                const index = parseInt(techItem.dataset.techIndex);
+                if (!isNaN(index) && this.techData[index]) {
+                    this.openModal(this.techData[index]);
+                }
+            }
+        });
+
+        // Close on overlay click
+        this.modalOverlay.addEventListener('click', (e) => {
+            if (e.target === this.modalOverlay) {
+                this.closeModal();
+            }
+        });
+
+        // Flip card on click
+        this.flipContainer.addEventListener('click', () => {
+            if (!this.isFlipped) {
+                this.flipCard();
+            }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modalOverlay.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+    }
+
+    openModal(techData) {
+        // Populate front face
+        this.front.innerHTML = `
+            <img src="${techData.src}" alt="${techData.alt}">
+            <h3>${techData.alt}</h3>
+            <p>${techData.desc}</p>
+            <div class="flip-hint">Cliquer pour en savoir plus →</div>
+        `;
+
+        // Populate back face
+        this.back.innerHTML = `
+            <h3>${techData.alt}</h3>
+            <div class="level-badge">${techData.level}</div>
+            <div class="experience">📅 ${techData.yearsExperience}</div>
+            <div class="description">${techData.detailedDesc}</div>
+        `;
+
+        // Reset flip state
+        this.isFlipped = false;
+        this.flipContainer.classList.remove('flipped');
+
+        // Show modal with animation
+        this.modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    flipCard() {
+        this.isFlipped = true;
+        this.flipContainer.classList.add('flipped');
+    }
+
+    closeModal() {
+        this.modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+
+        // Reset after animation
+        setTimeout(() => {
+            this.isFlipped = false;
+            this.flipContainer.classList.remove('flipped');
+        }, 300);
     }
 }
 

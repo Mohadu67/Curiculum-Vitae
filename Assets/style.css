@@ -1345,3 +1345,304 @@ section {
         scroll-behavior: smooth;
     }
 }
+
+/* ==========================================
+   FLIP CARD MODAL EFFECT
+   ========================================== */
+
+/* Modal Overlay */
+.flip-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 14, 39, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.flip-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Flip Card Container */
+.flip-card-container {
+    width: 500px;
+    height: 600px;
+    perspective: 1500px;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+}
+
+.flip-modal-overlay.active .flip-card-container {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Flip Card Inner */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.flip-card-container.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Card Faces (Front & Back) */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 24px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--glass-border);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+}
+
+/* Front Face */
+.flip-card-front {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%);
+}
+
+.flip-card-front img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 10px 30px rgba(59, 130, 246, 0.5));
+}
+
+.flip-card-front h3 {
+    font-family: var(--font-bold);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.flip-card-front p {
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.flip-card-front .flip-hint {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    animation: pulse-hint 2s ease infinite;
+}
+
+@keyframes pulse-hint {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* Back Face */
+.flip-card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+    text-align: left;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.flip-card-back h3 {
+    font-family: var(--font-bold);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.flip-card-back .level-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--gradient-primary);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.flip-card-back .experience {
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.flip-card-back .description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+}
+
+.flip-card-back .detail-list {
+    list-style: none;
+    padding: 0;
+}
+
+.flip-card-back .detail-list li {
+    color: var(--text-secondary);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.flip-card-back .detail-list li:before {
+    content: '✓';
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Close Button */
+.flip-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.flip-close-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: #EF4444;
+    transform: rotate(90deg);
+}
+
+.flip-close-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--text-primary);
+}
+
+/* Enhanced Tech Logo Item for Click */
+.tech-logo-item {
+    cursor: pointer;
+    position: relative;
+}
+
+.tech-logo-item::after {
+    content: 'Cliquer pour plus d\'infos';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(59, 130, 246, 0.9);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.tech-logo-item:hover::after {
+    opacity: 1;
+}
+
+/* Responsive Flip Card */
+@media (max-width: 768px) {
+    .flip-card-container {
+        width: 90%;
+        max-width: 400px;
+        height: 550px;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        padding: 2rem;
+    }
+
+    .flip-card-front img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .flip-card-front h3 {
+        font-size: 2rem;
+    }
+
+    .flip-card-back h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .flip-card-container {
+        width: 95%;
+        height: 500px;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        padding: 1.5rem;
+    }
+
+    .flip-card-front img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .flip-card-front h3 {
+        font-size: 1.8rem;
+    }
+
+    .flip-card-back h3 {
+        font-size: 1.3rem;
+    }
+
+    .flip-card-back .description {
+        font-size: 0.95rem;
+    }
+}
