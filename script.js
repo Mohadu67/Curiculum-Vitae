@@ -620,10 +620,10 @@ class CursorEffect {
             position: fixed;
             width: 20px;
             height: 20px;
-            border: 2px solid #3B82F6;
+            border: 2px solid #6B9FE8;
             border-radius: 50%;
             pointer-events: none;
-            transition: transform 0.15s ease;
+            transition: transform 0.15s ease, border-color 0.15s ease;
             z-index: 9999;
             mix-blend-mode: difference;
         `;
@@ -635,22 +635,58 @@ class CursorEffect {
     }
 
     init() {
+        // Update cursor position
         document.addEventListener('mousemove', (e) => {
             this.cursor.style.left = e.clientX - 10 + 'px';
             this.cursor.style.top = e.clientY - 10 + 'px';
         });
 
-        document.querySelectorAll('a, button, .glass-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                this.cursor.style.transform = 'scale(2)';
-                this.cursor.style.borderColor = '#38BDF8';
-            });
+        // Attach listeners to clickable elements
+        this.attachListeners();
 
-            el.addEventListener('mouseleave', () => {
-                this.cursor.style.transform = 'scale(1)';
-                this.cursor.style.borderColor = '#3B82F6';
-            });
+        // Re-attach listeners after dynamic content loads
+        setTimeout(() => {
+            this.attachListeners();
+        }, 1000);
+    }
+
+    attachListeners() {
+        // All clickable selectors
+        const clickableSelectors = [
+            'a',
+            'button',
+            '.tech-logo-item',
+            '.soft-skill-item',
+            '.timeline-item',
+            '.contact-card',
+            '.project-link',
+            '.project-image',
+            '[role="button"]',
+            'input[type="submit"]',
+            '.btn'
+        ];
+
+        const elements = document.querySelectorAll(clickableSelectors.join(', '));
+
+        elements.forEach(el => {
+            // Remove old listeners if any
+            el.removeEventListener('mouseenter', this.onMouseEnter);
+            el.removeEventListener('mouseleave', this.onMouseLeave);
+
+            // Add new listeners
+            el.addEventListener('mouseenter', this.onMouseEnter.bind(this));
+            el.addEventListener('mouseleave', this.onMouseLeave.bind(this));
         });
+    }
+
+    onMouseEnter() {
+        this.cursor.style.transform = 'scale(2)';
+        this.cursor.style.borderColor = '#8BB5F0';
+    }
+
+    onMouseLeave() {
+        this.cursor.style.transform = 'scale(1)';
+        this.cursor.style.borderColor = '#6B9FE8';
     }
 }
 
