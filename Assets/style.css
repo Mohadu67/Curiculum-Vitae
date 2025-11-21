@@ -806,10 +806,15 @@ section {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
-.project-image:hover .project-overlay {
+.project-card:hover .project-overlay {
     opacity: 1;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
 }
 
 .project-link {
@@ -819,6 +824,7 @@ section {
     color: white;
     font-weight: 600;
     padding: 1rem 2rem;
+    pointer-events: none;
     background: var(--gradient-primary);
     border-radius: 50px;
 }
@@ -2212,9 +2218,7 @@ section {
         }
     }
 
-    .tech-logos-grid::before,
-    .soft-skills-grid::before,
-    .projects-grid::before {
+    .skill-category::before {
         content: '';
         position: absolute;
         inset: -2px;

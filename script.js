@@ -670,8 +670,6 @@ class CursorEffect {
             '.timeline-item',
             '.contact-card',
             '.project-card',
-            '.project-link',
-            '.project-image',
             '[role="button"]',
             'input[type="submit"]',
             '.btn'
