@@ -639,11 +639,13 @@ section {
 
 /* Tech Logos Grid - Refonte Moderne */
 .tech-logos-grid {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 2rem;
     padding: 1rem 0;
 }
+
 
 .tech-logo-item {
     position: relative;
@@ -715,6 +717,7 @@ section {
 
 /* Soft Skills Grid - Refonte Moderne */
 .soft-skills-grid {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
@@ -2188,6 +2191,80 @@ section {
     }
     50%, 100% {
         left: 150%;
+    }
+}
+
+/* Animated borders for mobile only */
+@media (max-width: 1023px) {
+    @property --angle {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    @keyframes rotateBorder {
+        0% {
+            --angle: 0deg;
+        }
+        100% {
+            --angle: 360deg;
+        }
+    }
+
+    .tech-logos-grid::before,
+    .soft-skills-grid::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: 20px;
+        padding: 2px;
+        background: conic-gradient(
+            from var(--angle),
+            transparent 0%,
+            rgba(107, 159, 232, 0.6) 15%,
+            rgba(139, 181, 240, 0.8) 25%,
+            rgba(168, 204, 245, 0.6) 35%,
+            transparent 50%,
+            transparent 100%
+        );
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: rotateBorder 4s linear infinite;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .timeline {
+        padding: 2rem 0 2rem 3rem;
+        border-radius: 20px;
+    }
+
+    .timeline::after {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: 20px;
+        padding: 2px;
+        background: conic-gradient(
+            from var(--angle),
+            transparent 0%,
+            rgba(107, 159, 232, 0.5) 15%,
+            rgba(139, 181, 240, 0.7) 25%,
+            rgba(168, 204, 245, 0.5) 35%,
+            transparent 50%,
+            transparent 100%
+        );
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: rotateBorder 4s linear infinite;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .timeline::before {
+        z-index: 1;
     }
 }
 
