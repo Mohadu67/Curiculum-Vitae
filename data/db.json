@@ -20,7 +20,12 @@
       "description": "Application web de gestion pour un centre de loisirs. Elle permet la gestion des membres, des réservations de seance et plannification d'activité, offrant une expérience fluide aux utilisateurs.",
       "image": "Assets/img/logoEquestra.svg",
       "imageClass": "harmonith-image",
-      "link": "https://gitlab.com/Mohamiani/projetran.git",
+      "link": "http://151.80.146.178:8080",
+      "requiresLogin": true,
+      "loginCredentials": {
+        "email": "invite@bienvenue.fr",
+        "password": "invite2025"
+      },
       "tags": ["Figma", "PHP", "MariaDB", "SQL", "HTML", "CSS", "JavaScript" ],
       "colors": {
         "primary": "#3B82F6",

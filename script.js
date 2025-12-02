@@ -426,9 +426,10 @@ class DataLoader {
         const container = document.getElementById('projectsGrid');
         if (!container || !projects) return;
 
-        container.innerHTML = projects.map(project => `
+        container.innerHTML = projects.map((project, index) => `
             <div class="project-card glass-card"
                  data-link="${project.link}"
+                 data-project-index="${index}"
                  style="--project-primary: ${project.colors?.primary || '#6B9FE8'};
                         --project-secondary: ${project.colors?.secondary || '#8BB5F0'};
                         --project-accent: ${project.colors?.accent || '#A8CCF5'};">
@@ -455,12 +456,91 @@ class DataLoader {
 
         // Ajouter event listeners pour rendre les cards cliquables
         container.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                const link = card.dataset.link;
-                if (link) {
-                    window.open(link, '_blank');
+            card.addEventListener('click', () => {
+                const projectIndex = parseInt(card.dataset.projectIndex);
+                const project = projects[projectIndex];
+
+                if (project.requiresLogin) {
+                    // Afficher la popup de connexion
+                    this.showLoginModal(project);
+                } else {
+                    // Ouvrir directement le lien
+                    const link = card.dataset.link;
+                    if (link) {
+                        window.open(link, '_blank');
+                    }
                 }
             });
+        });
+    }
+
+    showLoginModal(project) {
+        // Créer la popup
+        const modalHTML = `
+            <div class="login-modal-overlay" id="loginModal">
+                <div class="login-modal">
+                    <button class="login-modal-close" onclick="document.getElementById('loginModal').remove()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                    </button>
+                    <div class="login-modal-content">
+                        <div class="login-modal-icon">🔐</div>
+                        <h2>Informations de connexion</h2>
+                        <p>Pour tester ce projet, utilisez les identifiants suivants :</p>
+                        <div class="credentials-container">
+                            <div class="credential-item">
+                                <strong>Email :</strong>
+                                <div class="credential-value">
+                                    <span>${project.loginCredentials.email}</span>
+                                    <button class="copy-btn" onclick="navigator.clipboard.writeText('${project.loginCredentials.email}'); this.innerHTML='✓'">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="credential-item">
+                                <strong>Mot de passe :</strong>
+                                <div class="credential-value">
+                                    <span>${project.loginCredentials.password}</span>
+                                    <button class="copy-btn" onclick="navigator.clipboard.writeText('${project.loginCredentials.password}'); this.innerHTML='✓'">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="open-project-btn" onclick="window.open('${project.link}', '_blank'); document.getElementById('loginModal').remove()">
+                            Ouvrir le projet
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                                <path d="M7 13L13 7M13 7H7M13 7V13" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Insérer la popup dans le DOM
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+        // Fermer la popup en cliquant sur l'overlay
+        document.getElementById('loginModal').addEventListener('click', (e) => {
+            if (e.target.id === 'loginModal') {
+                e.target.remove();
+            }
+        });
+
+        // Empêcher le scroll du body
+        document.body.style.overflow = 'hidden';
+
+        // Restaurer le scroll lors de la fermeture
+        document.querySelector('.login-modal-close').addEventListener('click', () => {
+            document.body.style.overflow = '';
         });
     }
 
