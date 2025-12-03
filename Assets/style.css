@@ -1526,6 +1526,7 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-align: center;
 }
 
 .flip-card-front p {
@@ -1856,42 +1857,42 @@ section {
 
 /* Experience Card Variations */
 .flip-card-container.experience-card .flip-card-front {
-    background: linear-gradient(135deg, rgba(159, 122, 234, 0.08) 0%, rgba(159, 122, 234, 0.08) 100%);
+    background: rgba(107, 159, 232, 0.03);
 }
 
 .flip-card-container.experience-card .flip-card-back {
-    background: linear-gradient(135deg, rgba(159, 122, 234, 0.1) 0%, rgba(159, 122, 234, 0.1) 100%);
+    background: rgba(107, 159, 232, 0.05);
 }
 
 .flip-card-container.experience-card .flip-card-front,
 .flip-card-container.experience-card .flip-card-back {
-    box-shadow: 0 8px 24px rgba(159, 122, 234, 0.12);
+    box-shadow: 0 4px 12px rgba(107, 159, 232, 0.08);
 }
 
 .flip-card-container.experience-card .flip-hint {
-    background: rgba(159, 122, 234, 0.15);
-    border-color: #9F7AEA;
-    color: #9F7AEA;
+    background: rgba(107, 159, 232, 0.15);
+    border-color: #6B9FE8;
+    color: #6B9FE8;
 }
 
 /* Formation Card Variations */
 .flip-card-container.formation-card .flip-card-front {
-    background: linear-gradient(135deg, rgba(236, 119, 171, 0.08) 0%, rgba(236, 119, 171, 0.08) 100%);
+    background: rgba(107, 159, 232, 0.03);
 }
 
 .flip-card-container.formation-card .flip-card-back {
-    background: linear-gradient(135deg, rgba(236, 119, 171, 0.1) 0%, rgba(236, 119, 171, 0.1) 100%);
+    background: rgba(107, 159, 232, 0.05);
 }
 
 .flip-card-container.formation-card .flip-card-front,
 .flip-card-container.formation-card .flip-card-back {
-    box-shadow: 0 8px 24px rgba(236, 119, 171, 0.12);
+    box-shadow: 0 4px 12px rgba(107, 159, 232, 0.08);
 }
 
 .flip-card-container.formation-card .flip-hint {
-    background: rgba(236, 119, 171, 0.15);
-    border-color: #EC77AB;
-    color: #EC77AB;
+    background: rgba(107, 159, 232, 0.15);
+    border-color: #6B9FE8;
+    color: #6B9FE8;
 }
 
 /* Location Badge */

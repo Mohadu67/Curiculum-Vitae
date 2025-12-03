@@ -110,23 +110,41 @@
   ],
   "experiences": [
     {
-      "title": "Manager",
-      "location": "KFC | Homme de Fer, Strasbourg",
-      "period": "Septembre 2018 à Août 2021",
-      "description": "Gestion de service, proximité terrain, respect des standards et des normes d'hygiène, optimisation de la productivité et préparation du terrain pour assurer la continuité d'exploitation.",
+      "title": "TPMR",
+      "location": "MobiStras",
+      "period": "Mars 2025 à Septembre 2025",
+      "description": "Transporteur accompagnateur PMR. Mission principale : assurer l'accompagnement de personnes à mobilité réduite d'un point A à un point B en toute sécurité, dans un climat rassurant et une bonne ambiance.",
+      "tasks": [
+        "Accompagnement de personnes à mobilité réduite lors de leurs déplacements",
+        "Aide à l'installation et à la sortie du véhicule en toute sécurité",
+        "Vérification quotidienne de l'état du véhicule",
+        "Assistance personnalisée selon les besoins des passagers",
+        "Respect strict des horaires et des itinéraires",
+        "Communication bienveillante avec les usagers et leurs proches"],
+      "achievements": [
+        "Taux de satisfaction élevé des usagers accompagnés",
+        "Aucun incident de sécurité durant les missions",
+        "Fidélisation de plusieurs bénéficiaires réguliers"],
+      "technologies": ["Véhicule TPMR", "Rampes d'accès", "Systèmes de fixation fauteuil", "GPS", "Téléphonie professionnelle"]
+    },
+    {
+      "title": "RGM",
+      "location": "KFC | Porte de l'Hôpital, Strasbourg",
+      "period": "Mars 2023 à Décembre 2023",
+      "description": "Ouverture de restaurant, formation des équipiers et managers, gestion des stocks/coûts, supervision des pôles, et actions marketing pour accroître le chiffre d'affaires.",
       "icon": "🍗",
       "tasks": [
-        "Supervision d'équipes de 15+ collaborateurs",
-        "Gestion des plannings et optimisation RH",
-        "Contrôle qualité et respect normes HACCP",
-        "Formation et accompagnement des nouveaux employés",
-        "Analyse des KPIs et reporting quotidien",
-        "Gestion des stocks et réduction du gaspillage"
+        "Ouverture complète nouveau restaurant",
+        "Recrutement et formation 30+ collaborateurs",
+        "Mise en place processus et procédures",
+        "Gestion stocks, approvisionnement, inventaires",
+        "Supervision pôles cuisine/salle/drive",
+        "Actions marketing ouverture et fidélisation"
       ],
       "achievements": [
-        "Amélioration de 25% de la satisfaction client",
-        "Réduction de 15% du turnover équipe",
-        "Optimisation des coûts de main d'œuvre"
+        "Ouverture réussie dans les délais",
+        "Atteinte objectifs CA dès le 2ème mois",
+        "Constitution équipe performante et autonome"
       ]
     },
     {
@@ -150,42 +168,24 @@
       ]
     },
     {
-      "title": "RGM",
-      "location": "KFC | Porte de l'Hôpital, Strasbourg",
-      "period": "Mars 2023 à Décembre 2023",
-      "description": "Ouverture de restaurant, formation des équipiers et managers, gestion des stocks/coûts, supervision des pôles, et actions marketing pour accroître le chiffre d'affaires.",
+      "title": "Manager",
+      "location": "KFC | Homme de Fer, Strasbourg",
+      "period": "Septembre 2018 à Août 2021",
+      "description": "Gestion de service, proximité terrain, respect des standards et des normes d'hygiène, optimisation de la productivité et préparation du terrain pour assurer la continuité d'exploitation.",
       "icon": "🍗",
       "tasks": [
-        "Ouverture complète nouveau restaurant",
-        "Recrutement et formation 30+ collaborateurs",
-        "Mise en place processus et procédures",
-        "Gestion stocks, approvisionnement, inventaires",
-        "Supervision pôles cuisine/salle/drive",
-        "Actions marketing ouverture et fidélisation"
+        "Supervision d'équipes de 15+ collaborateurs",
+        "Gestion des plannings et optimisation RH",
+        "Contrôle qualité et respect normes HACCP",
+        "Formation et accompagnement des nouveaux employés",
+        "Analyse des KPIs et reporting quotidien",
+        "Gestion des stocks et réduction du gaspillage"
       ],
       "achievements": [
-        "Ouverture réussie dans les délais",
-        "Atteinte objectifs CA dès le 2ème mois",
-        "Constitution équipe performante et autonome"
+        "Amélioration de 25% de la satisfaction client",
+        "Réduction de 15% du turnover équipe",
+        "Optimisation des coûts de main d'œuvre"
       ]
-    },
-    {
-      "title": "TPMR",
-      "location": "MobiStras",
-      "period": "Mars 2025 à Septembre 2025",
-      "description": "Transporteur accompagnateur PMR. Mission principale : assurer l'accompagnement de personnes à mobilité réduite d'un point A à un point B en toute sécurité, dans un climat rassurant et une bonne ambiance.",
-      "tasks": [
-        "Accompagnement de personnes à mobilité réduite lors de leurs déplacements",
-        "Aide à l'installation et à la sortie du véhicule en toute sécurité",
-        "Vérification quotidienne de l'état du véhicule",
-        "Assistance personnalisée selon les besoins des passagers",
-        "Respect strict des horaires et des itinéraires",
-        "Communication bienveillante avec les usagers et leurs proches"],
-      "achievements": [
-        "Taux de satisfaction élevé des usagers accompagnés",
-        "Aucun incident de sécurité durant les missions",
-        "Fidélisation de plusieurs bénéficiaires réguliers"],
-      "technologies": ["Véhicule TPMR", "Rampes d'accès", "Systèmes de fixation fauteuil", "GPS", "Téléphonie professionnelle"]
     }
   ],
   "formations": [
