@@ -32,20 +32,6 @@
         "secondary": "#10B981",
         "accent": "#F59E0B"
       }
-    },
-    {
-      "id": 3,
-      "title": "CV Interactif",
-      "description": "Curriculum Vitae entièrement codé avec animations et interactions. Une approche moderne pour présenter son parcours professionnel.",
-      "image": "Assets/img/Capture d'écran 2025-07-08 142235.png",
-      "imageClass": "",
-      "link": "https://nono13122002.github.io/CV/index.html",
-      "tags": ["HTML5", "CSS3", "Animation"],
-      "colors": {
-        "primary": "#8B5CF6",
-        "secondary": "#6366F1",
-        "accent": "#A78BFA"
-      }
     }
   ],
   "softSkills": [
@@ -184,25 +170,22 @@
       ]
     },
     {
-      "title": "Développeur Web Junior",
+      "title": "TPMR",
       "location": "MobiStras",
       "period": "Mars 2025 à Septembre 2025",
-      "description": "Développement et maintenance d'un site vitrine. Pages responsives, fonctionnalités JS simples, formulaires reliés à MySQL, GitHub pour le suivi, correctifs et améliorations UX.",
-      "icon": "💻",
+      "description": "Transporteur accompagnateur PMR. Mission principale : assurer l'accompagnement de personnes à mobilité réduite d'un point A à un point B en toute sécurité, dans un climat rassurant et une bonne ambiance.",
       "tasks": [
-        "Développement pages responsive (HTML/CSS/JS)",
-        "Intégration formulaires avec backend MySQL",
-        "Maintenance et correctifs bugs",
-        "Amélioration UX/UI suite feedback utilisateurs",
-        "Versioning et collaboration via GitHub",
-        "Optimisation performances et SEO"
-      ],
+        "Accompagnement de personnes à mobilité réduite lors de leurs déplacements",
+        "Aide à l'installation et à la sortie du véhicule en toute sécurité",
+        "Vérification quotidienne de l'état du véhicule",
+        "Assistance personnalisée selon les besoins des passagers",
+        "Respect strict des horaires et des itinéraires",
+        "Communication bienveillante avec les usagers et leurs proches"],
       "achievements": [
-        "Amélioration temps de chargement de 40%",
-        "Refonte complète interface mobile",
-        "Intégration système de contact fonctionnel"
-      ],
-      "technologies": ["HTML5", "CSS3", "JavaScript", "MySQL", "Git", "GitHub"]
+        "Taux de satisfaction élevé des usagers accompagnés",
+        "Aucun incident de sécurité durant les missions",
+        "Fidélisation de plusieurs bénéficiaires réguliers"],
+      "technologies": ["Véhicule TPMR", "Rampes d'accès", "Systèmes de fixation fauteuil", "GPS", "Téléphonie professionnelle"]
     }
   ],
   "formations": [
