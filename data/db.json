@@ -6,7 +6,7 @@
       "description": "Application de calcul d'IMC et de calories. Interface moderne et intuitive pour suivre votre nutrition et vos objectifs de santé.",
       "image": "Assets/img/logoHarmonith.svg",
       "imageClass": "harmonith-image",
-      "link": "https://incandescent-dolphin-d90e0a.netlify.app/",
+      "link": "https://harmonith.fr",
       "tags": ["React Vite", "Node.js", "Express", "MongoDB", "CSS Module", "Figma", "Illustrator"],
       "colors": {
         "primary": "#b8ddd1",
